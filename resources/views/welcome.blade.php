@@ -19,6 +19,7 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        @vite('resources/vue/assets/tailwind.css')
     </head>
     <body class="antialiased">
         <div id="app"></div>
