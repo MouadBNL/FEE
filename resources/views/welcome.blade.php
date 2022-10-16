@@ -20,6 +20,11 @@
             }
         </style>
         @vite('resources/vue/assets/tailwind.css')
+
+        <!-- naive-ui's style will be inserted here -->
+        <meta name="naive-ui-style" />
+        <!-- vueuc's style will be inserted here -->
+        <meta name="vueuc-style" />
     </head>
     <body class="antialiased">
         <div id="app"></div>
