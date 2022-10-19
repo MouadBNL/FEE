@@ -37,4 +37,25 @@ class User extends Authenticatable
     {
         return $this->morphTo();
     }
+
+    public function hasRole(String $role)
+    {
+        return $this->role == $role;
+    }
+
+    public function getIsAdmin()
+    {
+        return $this->hasRole('admin');
+    }
+
+    public function getIsStudent()
+    {
+        return $this->hasRole('student');
+    }
+
+    public function getIsCompany()
+    {
+        return $this->hasRole('company');
+    }
+
 }
