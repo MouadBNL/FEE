@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('role');
             $table->rememberToken();
 
+            $table->string('profile_type')->nullable();
+            $table->unsignedBigInteger('profile_id')->nullable();
+
             $table->timestamps();
         });
     }
