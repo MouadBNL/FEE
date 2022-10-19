@@ -14,6 +14,7 @@ class User extends Authenticatable implements JWTSubject
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $guarded = [];
+    protected $with = ['profile'];
 
     /**
      * The attributes that should be hidden for serialization.
