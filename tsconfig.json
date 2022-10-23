@@ -1,9 +1,13 @@
-{  
+{
   "compilerOptions": {
-   "paths": {
-     "@/*": [
-      "./resources/vue/*"
-     ]
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "types": ["node", "vite/client"],
+    "paths": {
+      "@/*": [
+        "./resources/vue/*"
+      ]
     }
   }
 }
