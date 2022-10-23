@@ -1,14 +1,9 @@
 <template>
-    <h1>Hello world</h1>
-
-    <NSpace>
-
-        <button class="px-8 py-2 bg-primary-light-1 text-white">{{ counter }}</button>
-    
-        <NButton @click="inc" type="primary">
-            {{ counter }}
-        </NButton>
-    </NSpace>
+    <div>
+        <RouterLink :to="{name: 'home'}">Home</RouterLink>
+        <RouterLink :to="{name: 'about'}">About</RouterLink>
+        <RouterView/>
+    </div>
 </template>
 
 <script lang="ts" setup>
