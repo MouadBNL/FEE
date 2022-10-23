@@ -28,3 +28,11 @@ Route::group([
         Route::post('register', 'register');
     });
 });
+
+Route::get('/test', function() {
+    return  [
+        'success' => true,
+        'message' => 'test endpoint working',
+        'data' => null
+    ];
+});
