@@ -19,6 +19,7 @@ module.exports = {
           "system-ui",
           "sans-serif",
         ],
+        "open-sans": ['"Open sans"', 'sans-serif']
       },
       colors: {
         primary: {
@@ -34,6 +35,12 @@ module.exports = {
           DEFAULT: "#F9AB35",
           dark: "#C79C3D",
         },
+        fe: {
+          'DEFAULT': '#F9F8F9',
+          'dark-border': '#EAE8EA',
+          'light-text': '#A3A4A4',
+          'dark-text': '#464446'
+        }
       },
     },
   },
