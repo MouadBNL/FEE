@@ -11,7 +11,17 @@ const router = createRouter({
         {
             path: '/about',
             name: 'about',
-            component: () => import('@/views/AboutPage.vue')
+            component: () => import('@/views/AboutPage.vue'),
+            meta: {
+                layout: 'admin'
+            },
+            children: [
+                {
+                    path: 'sub',
+                    name: 'subabout',
+                    component: () => import('@/views/SubAboutPage.vue')
+                }
+            ]
         },
     ]
 })
