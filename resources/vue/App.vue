@@ -14,7 +14,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { NButton, NSpace } from 'naive-ui'
-import { http } from './services'
+import { http } from '@/services'
 
 const counter = ref(0)
 
