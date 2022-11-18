@@ -1,3 +1,125 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	@variants responsive {
+		.ratio-720 {
+			padding-bottom: 56.25%;
+		}
+
+		.primary-gradient {
+			@apply bg-gradient-to-br from-primary-dark-1 to-primary-light-1;
+		}
+		.accent-gradient {
+			@apply bg-gradient-to-br from-accent-dark to-accent;
+		}
+
+		.btn-primary {
+			@apply px-4 py-2 transition-all rounded bg-gradient-to-br from-primary-dark-1 to-primary-light-1  outline outline-2 outline-transparent text-white hover:text-gray-800 hover:from-transparent hover:to-transparent hover:outline-primary;
+		}
+		.btn-accent {
+			@apply px-4 py-2 transition-all rounded bg-gradient-to-br from-accent-dark to-accent  outline outline-2 outline-transparent text-white hover:text-gray-800 hover:from-transparent hover:to-transparent hover:outline-accent;
+		}
+
+		.text-primary-gradient {
+			@apply primary-gradient bg-clip-text text-transparent;
+		}
+
+		.shadow-accent {
+			-webkit-box-shadow: -15px 15px 0px 0px rgba(249, 170, 53, 1);
+			-moz-box-shadow: -15px 15px 0px 0px rgba(249, 170, 53, 1);
+			box-shadow: -15px 15px 0px 0px rgba(249, 170, 53, 1);
+		}
+	}
+}
+
+.nav-item {
+	@apply px-4 py-2 transition rounded bg-transparent text-gray-900 hover:bg-primary hover:text-white;
+}
+
+#grad-anim {
+	--gradient-color-1: #005f60;
+	--gradient-color-2: #316d57;
+	--gradient-color-3: #82dbba;
+	--gradient-color-4: #316d57;
+	z-index: 0;
+}
+
+/* Responsive font size */
+
+html{
+	font-size: 12px;
+  }
+  
+  @media (min-width: 640px) {
+	html{
+	  font-size: 13px;
+	}
+  }
+  
+  @media (min-width: 1024px) {
+	html{
+	  font-size: 14px;
+	}
+  }
+  
+  @media (min-width: 1280px) {
+	html{
+	  font-size: 16px;
+	}
+  }
+
+/* HAMBURGER MENU */
+
+.hamburger {
+	cursor: pointer;
+	width: 48px;
+	height: 48px;
+	transition: all 0.25s;
+}
+
+.hamburger__top-bun,
+.hamburger__bottom-bun,
+.hamburger__middle-bun {
+	content: "";
+	position: absolute;
+	width: 24px;
+	height: 2px;
+	background: #000;
+	transform: rotate(0);
+	transition: all 0.5s;
+	opacity: 1;
+}
+
+.hamburger:hover [class*="-bun"] {
+	@apply bg-primary;
+}
+
+.hamburger__top-bun {
+	transform: translateY(-5px);
+}
+
+.hamburger__bottom-bun {
+	transform: translateY(5px);
+}
+
+.open {
+	transform: rotate(90deg);
+	transform: translateY(-1px);
+}
+
+.open .hamburger__top-bun {
+	transform: rotate(45deg) translateY(0px);
+}
+
+.open .hamburger__bottom-bun {
+	transform: rotate(-45deg) translateY(0px);
+}
+.open .hamburger__middle-bun {
+	opacity: 0;
+}
