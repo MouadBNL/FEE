@@ -22,7 +22,12 @@
         @vite('resources/vue/assets/tailwind.css')
     </head>
     <body class="antialiased">
-        <div id="app"></div>
+        <div id="app">
+            <h1>Forum ensak entreprise</h1>
+            <p>
+                <hello-world></hello-world>
+            </p>
+        </div>
 
         @vite('resources/vue/index.ts')
     </body>
