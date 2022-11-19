@@ -48,7 +48,7 @@
                             </svg>
                         </a>
                     </div>
-                    <h2 class="text-lg font-medium">Dashboard</h2>
+                    <h2 class="h2">Dashboard</h2>
                 </nav>
 
                 <nav class="flex items-center gap-7">

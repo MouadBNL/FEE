@@ -8,12 +8,12 @@
                         {{-- Image profile --}}
                     </div>
     
-                    <h3 class="text-center text-lg font-medium mb-2">{{ auth()->user()->name }}</h3>
-                    <p class="text-center text-base font-semibold text-gr-400">Genie Informatique 4eme</p>
+                    <h3 class="h3 text-center">{{ auth()->user()->name }}</h3>
+                    <h4 class="h4 text-center">Genie Informatique 4eme</h4>
     
                 </div>
                 <div class="py-8 px-8 flex justify-center">
-                    <a class="text-center text-primary font-bold text-sm" href="#">Voir mon profil</a>
+                    <a class="link" href="#">Voir mon profil</a>
                 </div>
             </div>
         </div>

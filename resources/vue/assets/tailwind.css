@@ -127,7 +127,23 @@
 
 
 
+/* UI elements */
+
+.h2 {
+	@apply text-xl font-bold text-gr-800;
+}
+.h3 {
+	@apply text-lg font-semibold text-gr-800;
+}
+.h4 {
+	@apply text-base font-normal text-gr-400;
+}
 
 .card {
 	@apply bg-white border border-gr-100 rounded-md shadow-sm;
 }
+
+.link {
+	@apply text-center text-primary font-bold text-sm hover:underline hover:text-primary-dark-2 transition-colors;
+}
+
