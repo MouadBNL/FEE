@@ -13,7 +13,7 @@
     
                 </div>
                 <div class="py-8 px-8 flex justify-center">
-                    <a class="link" href="#">Voir mon profil</a>
+                    <a class="link" href="{{ route('myprofile') }}">Voir mon profil</a>
                 </div>
             </div>
         </div>

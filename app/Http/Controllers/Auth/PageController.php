@@ -14,4 +14,12 @@ class PageController extends Controller
         }
         return redirect()->route('welcome');
     }
+
+    public function myprofile()
+    {
+        if(auth()->user()->type == "student") {
+            return view('student.my-profile');
+        }
+        return redirect()->route('welcome');
+    }
 }
