@@ -123,3 +123,11 @@
 .open .hamburger__middle-bun {
 	opacity: 0;
 }
+
+
+
+
+
+.card {
+	@apply bg-white border border-gr-100 rounded-md shadow-sm;
+}
