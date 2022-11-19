@@ -18,12 +18,12 @@
             </div>
         </div>
         <div class="col-span-2">
-            <x-card title="Offre d'emploi" class="min-h-screen">
+            <x-card title="Offres d'emploi" class="min-h-screen">
                 <p>Display job offers here !</p>
             </x-card>
         </div>
         <div class="col-span-1">
-            <x-card title="Message">
+            <x-card title="Messages">
                 <p>Display messages here !</p>
             </x-card>
         </div>

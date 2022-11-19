@@ -20,7 +20,7 @@ class LoginController extends Controller
         
         $request->session()->regenerate();
 
-        return redirect()->route('student.dashboard');
+        return redirect()->route('dashboard');
     }
 
     public function destroy(Request $request) {

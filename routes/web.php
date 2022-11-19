@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\PageController;
 use App\Http\Controllers\Student\Auth\LoginController as StudentLoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,19 +17,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('welcome');
+
+Route::group(['middleware' => ['auth']], function(){
+    /**
+     * Routing basic Auth pages (dashboard, profile, ...)
+     */
+    Route::get('dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 });
-
-
-
-Route::get('dashboard', function(){
-    return redirect()->route('student.dashboard');
-})->middleware('auth');
 
 Route::group(['middleware' => 'guest'], function() {
     Route::get('student/login', [StudentLoginController::class, 'create'])->name('student.login.create');
     Route::get('student/login', [StudentLoginController::class, 'create'])->name('login');
     Route::post('student/login', [StudentLoginController::class, 'store'])->name('student.login.store');
 });
-
-
-Route::view('student/dashboard', 'student.dashboard')->middleware('auth')->name('student.dashboard');
