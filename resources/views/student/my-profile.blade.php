@@ -11,6 +11,12 @@
                         <h3 class="h3 text-center">{{ auth()->user()->name }}</h3>
                         <h4 class="h4 text-center">Genie Informatique 4eme</h4>
 
+                        @auth
+                            <edit-button>
+                                <edit-user-info></edit-user-info>
+                            </edit-button>
+                        @endauth
+
                     </div>
                     <div class="py-8 px-8 grid grid-cols-1 gap-y-4">
                         <div class="flex items-center">
