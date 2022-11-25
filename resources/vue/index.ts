@@ -1,4 +1,5 @@
 import { createApp } from "vue/dist/vue.esm-bundler"
+import { NConfigProvider } from "naive-ui"
 
 const app = createApp({})
 
@@ -22,5 +23,7 @@ app.component('edit-student-links', EditStudentLinks)
 app.component('edit-student-hobbies', EditStudentHobbies);
 app.component('edit-student-skills', EditStudentSkills);
 app.component('edit-student-languages', EditStudentLanguages);
+
+app.component('n-config-provider', NConfigProvider);
 
 app.mount('#app')
