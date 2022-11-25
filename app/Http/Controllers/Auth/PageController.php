@@ -9,17 +9,17 @@ class PageController extends Controller
 {
     public function dashboard()
     {
-        if(auth()->user()->type == "student") {
+        // if(auth()->user()->type == "student") {
             return view('student.dashboard');
-        }
-        return redirect()->route('welcome');
+        // }
+        // return redirect()->route('welcome');
     }
 
     public function myprofile()
     {
-        if(auth()->user()->type == "student") {
+        // if(auth()->user()->type == "student") {
             return view('student.my-profile');
-        }
-        return redirect()->route('welcome');
+        // }
+        // return redirect()->route('welcome');
     }
 }

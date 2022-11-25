@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => 'auth'], function(){
     /**
      * Routing basic Auth pages (dashboard, profile, ...)
      */
