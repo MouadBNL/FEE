@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -17,8 +18,11 @@ class PageController extends Controller
 
     public function myprofile()
     {
+        $user = User::where('id', auth()->user()->id)->with('profile')->firstOrFail();
         // if(auth()->user()->type == "student") {
-            return view('student.my-profile');
+            return view('student.my-profile', [
+                'user' => $user
+            ]);
         // }
         // return redirect()->route('welcome');
     }

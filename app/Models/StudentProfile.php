@@ -13,6 +13,10 @@ class StudentProfile extends Model
     
     protected $guarded = [];
 
+    protected $casts = [
+        'links' => 'array'
+    ];
+
     /**
      * Get the user that owns the StudentProfile
      *

@@ -6,8 +6,12 @@ import HelloWorldVue from "./components/HelloWorld.vue"
 import EditButton from "./components/EditButton.vue"
 import EditUserInfo from "./components/auth/EditUserInfo.vue"
 
+import EditStudentLinks from "./components/auth/student/EditLinks.vue"
+
 app.component('hello-world', HelloWorldVue)
 app.component('edit-button', EditButton)
 app.component('edit-user-info', EditUserInfo)
+
+app.component('edit-student-links', EditStudentLinks)
 
 app.mount('#app')

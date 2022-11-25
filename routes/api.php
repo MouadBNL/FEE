@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\Student\ProfileController as StudentProfileController;
 use App\Http\Controllers\Api\V1\UserInfoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,4 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['auth:sanctum'])->group(function() {
     Route::get('myprofile', [UserInfoController::class, 'getUserInfo']);
     Route::post('myprofile/user-info', [UserInfoController::class, 'update']);
+
+
+    Route::get('student/profile/links', [StudentProfileController::class, 'getLinks']);
+    Route::put('student/profile/links', [StudentProfileController::class, 'updateLinks']);
 });
