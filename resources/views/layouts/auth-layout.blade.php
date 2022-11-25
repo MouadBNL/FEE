@@ -19,6 +19,9 @@
 
     </style>
     @vite('resources/vue/assets/tailwind.css')
+
+    <meta name="naive-ui-style" />
+    <meta name="vueuc-style" />
 </head>
 <body class="antialiased font-sans">
     <div id="app" class="flex min-h-screen flex-col bg-gray-50">

@@ -1,5 +1,5 @@
 <template>
-    <NButton @click="show= true">Edit</NButton>
+    <NButton type="primary" @click="show= true">Edit</NButton>
     <NModal v-model:show="show">
         <slot />
     </NModal>

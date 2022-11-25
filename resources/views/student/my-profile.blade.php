@@ -3,7 +3,7 @@
         <div class="col-span-1 relative">
             <div class="sticky top-14">
                 <div class="card mb-8">
-                    <div class="pt-14 pb-8 px-8 border-b border-gr-100">
+                    <div class="pt-14 pb-8 px-8 border-b border-gr-100 relative">
                         <div class="mx-auto h-32 w-32 rounded-full bg-gr-100 border border-primary aspect-square mb-8">
                             {{-- Image profile --}}
                         </div>
@@ -12,11 +12,14 @@
                         <h4 class="h4 text-center">Genie Informatique 4eme</h4>
 
                         @auth
-                            <edit-button>
-                                <edit-user-info></edit-user-info>
-                            </edit-button>
+                            <div class="absolute top-4 right-4">
+                                <edit-button>
+                                    <div class="w-full md:2/3 lg:w-1/3">
+                                        <edit-user-info></edit-user-info>
+                                    </div>
+                                </edit-button>
+                            </div>
                         @endauth
-
                     </div>
                     <div class="py-8 px-8 grid grid-cols-1 gap-y-4">
                         <div class="flex items-center">

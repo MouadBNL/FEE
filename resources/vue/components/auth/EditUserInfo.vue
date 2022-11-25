@@ -1,5 +1,5 @@
 <template>
-    <n-card class="w-full md:2/3 lg:w-1/3" title="Modifier vos informations utilisateur" :bordered="false" size="huge"
+    <n-card title="Modifier vos informations utilisateur" :bordered="false" size="huge"
         role="dialog" aria-modal="true">
 
         <div class="flex gap-8 items-center mb-8">
