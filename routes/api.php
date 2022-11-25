@@ -28,6 +28,13 @@ Route::middleware(['auth:sanctum'])->group(function() {
 
     Route::get('student/profile/links', [StudentProfileController::class, 'getLinks']);
     Route::put('student/profile/links', [StudentProfileController::class, 'updateLinks']);
+
     Route::get('student/profile/hobbies', [StudentProfileController::class, 'getHobbies']);
     Route::put('student/profile/hobbies', [StudentProfileController::class, 'updateHobbies']);
+
+    Route::get('student/profile/skills', [StudentProfileController::class, 'getSkills']);
+    Route::put('student/profile/skills', [StudentProfileController::class, 'updateSkills']);
+
+    Route::get('student/profile/languages', [StudentProfileController::class, 'getLanguages']);
+    Route::put('student/profile/languages', [StudentProfileController::class, 'updateLanguages']);
 });

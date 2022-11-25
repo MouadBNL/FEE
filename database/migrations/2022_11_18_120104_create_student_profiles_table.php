@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('sex')->nullable();
             $table->string('phone')->nullable();
-            $table->json('hobbies')->nullable();
 
             // Academic info
             $table->string('field')->nullable();
@@ -36,6 +35,7 @@ return new class extends Migration
             $table->json('skills')->nullable();
             $table->json('languages')->nullable();
             $table->json('links')->nullable();
+            $table->json('hobbies')->nullable();
 
             // This tables refers to other tables : Experiences, Projects, Educations, Cerifications
             $table->timestamps();

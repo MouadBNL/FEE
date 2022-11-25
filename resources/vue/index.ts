@@ -8,6 +8,8 @@ import EditUserInfo from "./components/auth/EditUserInfo.vue"
 
 import EditStudentLinks from "./components/auth/student/EditLinks.vue"
 import EditStudentHobbies from "./components/auth/student/EditHobbies.vue"
+import EditStudentSkills from "./components/auth/student/EditSkills.vue"
+import EditStudentLanguages from "./components/auth/student/EditLanguages.vue"
 
 app.component('hello-world', HelloWorldVue)
 app.component('edit-button', EditButton)
@@ -18,5 +20,7 @@ app.component('edit-user-info', EditUserInfo)
  */
 app.component('edit-student-links', EditStudentLinks)
 app.component('edit-student-hobbies', EditStudentHobbies);
+app.component('edit-student-skills', EditStudentSkills);
+app.component('edit-student-languages', EditStudentLanguages);
 
 app.mount('#app')

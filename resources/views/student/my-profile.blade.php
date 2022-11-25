@@ -156,26 +156,45 @@
             </x-card>
         </div>
         <div class="col-span-1">
-            <x-card title="Compétences" class="mb-8">
+            <x-card title="Compétences" class="mb-8 relative">
                 {{-- <p class="text-gr-600">non spécifié</p> --}}
                 <div class="tag-container">
-                    <span class="tag">Laravel</span>
-                    <span class="tag">VueJS</span>
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">UI/UX</span>
-                    <span class="tag">Figma</span>
+                    @forelse($user->profile->skills as $skill)
+                    <span class="tag">{{ $skill }}</span>
+                    @empty
+                    <span class="text-gr-600">Pas de Compétences spécifiée</span>
+                    @endforelse
                 </div>
+
+                @auth
+                <div class="absolute top-4 right-4">
+                    <edit-button>
+                        <div class="w-full md:2/3 lg:w-1/3">
+                            <edit-student-skills></edit-student-skills>
+                        </div>
+                    </edit-button>
+                </div>
+                @endauth
             </x-card>
-            <x-card title="Langues" class="mb-8">
+            <x-card title="Langues" class="mb-8 relative">
                 {{-- <p class="text-gr-600">non spécifié</p> --}}
                 <div class="tag-container">
-                    <span class="tag">Books</span>
-                    <span class="tag">Gaming</span>
-                    <span class="tag">Football</span>
-                    <span class="tag">Programming</span>
-                    <span class="tag">Movies</span>
+                    @forelse($user->profile->languages as $lang)
+                    <span class="tag">{{ $lang["key"] }} | {{ $lang["value"] }}</span>
+                    @empty
+                    <span class="text-gr-600">Pas de Compétences spécifiée</span>
+                    @endforelse
                 </div>
+
+                @auth
+                <div class="absolute top-4 right-4">
+                    <edit-button>
+                        <div class="w-full md:2/3 lg:w-1/3">
+                            <edit-student-languages></edit-student-languages>
+                        </div>
+                    </edit-button>
+                </div>
+                @endauth
             </x-card>
             <x-card title="Profils similaires" class="mb-8">
                 <p class="text-gr-600">non spécifié</p>
