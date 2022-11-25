@@ -14,7 +14,8 @@ class StudentProfile extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'links' => 'array'
+        'links' => 'array',
+        'hobbies' => 'array'
     ];
 
     /**

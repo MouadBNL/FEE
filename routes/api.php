@@ -28,4 +28,6 @@ Route::middleware(['auth:sanctum'])->group(function() {
 
     Route::get('student/profile/links', [StudentProfileController::class, 'getLinks']);
     Route::put('student/profile/links', [StudentProfileController::class, 'updateLinks']);
+    Route::get('student/profile/hobbies', [StudentProfileController::class, 'getHobbies']);
+    Route::put('student/profile/hobbies', [StudentProfileController::class, 'updateHobbies']);
 });
