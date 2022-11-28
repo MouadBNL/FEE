@@ -94,5 +94,25 @@ class ProfileController extends Controller
         return ['message' => 'ok'];
     }
 
+    public function getSummary()
+    {
+        $user = User::where('id', auth()->user()->id)->with('profile')->firstOrFail();
+
+        return $user->profile->summary;
+    }
+
+    public function updateSummary()
+    {
+        $data = request()->validate([
+            'summary' => 'present|string'
+        ]);
+
+        User::where('id', auth()->user()->id)->firstOrFail()->profile()->update([
+            'summary' => $data['summary']
+        ]);
+
+        return ['message' => 'ok'];
+    }
+
     
 }

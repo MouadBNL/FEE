@@ -37,4 +37,7 @@ Route::middleware(['auth:sanctum'])->group(function() {
 
     Route::get('student/profile/languages', [StudentProfileController::class, 'getLanguages']);
     Route::put('student/profile/languages', [StudentProfileController::class, 'updateLanguages']);
+
+    Route::get('student/profile/summary', [StudentProfileController::class, 'getSummary']);
+    Route::put('student/profile/summary', [StudentProfileController::class, 'updateSummary']);
 });

@@ -84,8 +84,20 @@
             </div>
         </div>
         <div class="col-span-2">
-            <x-card title="Sommaire" class="mb-8">
-                <p class="text-gr-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque doloribus quam consectetur dolorum excepturi officiis, laborum nisi maxime tempora id ipsum molestiae corrupti ipsa repellendus in est totam perferendis labore!</p>
+            <x-card title="Sommaire" class="mb-8 relative">
+                <p class="text-gr-600">
+                    {{ $user->profile->summary ?? 'Pas de sommaire spécifié' }}
+                </p>
+
+                @auth
+                <div class="absolute top-4 right-4">
+                    <edit-button>
+                        <div class="w-full md:2/3 lg:w-1/3">
+                            <edit-student-summary></edit-student-summary>
+                        </div>
+                    </edit-button>
+                </div>
+                @endauth
             </x-card>
             <x-card title="Experiences" class="mb-8">
                 <div class="grid grid-cols-1 gap-y-8">

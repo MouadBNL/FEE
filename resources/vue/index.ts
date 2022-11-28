@@ -11,6 +11,7 @@ import EditStudentLinks from "./components/auth/student/EditLinks.vue"
 import EditStudentHobbies from "./components/auth/student/EditHobbies.vue"
 import EditStudentSkills from "./components/auth/student/EditSkills.vue"
 import EditStudentLanguages from "./components/auth/student/EditLanguages.vue"
+import EditStudentSummary from "./components/auth/student/EditSummary.vue"
 
 app.component('hello-world', HelloWorldVue)
 app.component('edit-button', EditButton)
@@ -20,10 +21,11 @@ app.component('edit-user-info', EditUserInfo)
  * Student Profile component
  */
 app.component('edit-student-links', EditStudentLinks)
-app.component('edit-student-hobbies', EditStudentHobbies);
-app.component('edit-student-skills', EditStudentSkills);
-app.component('edit-student-languages', EditStudentLanguages);
+app.component('edit-student-hobbies', EditStudentHobbies)
+app.component('edit-student-skills', EditStudentSkills)
+app.component('edit-student-languages', EditStudentLanguages)
+app.component('edit-student-summary', EditStudentSummary)
 
-app.component('n-config-provider', NConfigProvider);
+app.component('n-config-provider', NConfigProvider)
 
 app.mount('#app')
