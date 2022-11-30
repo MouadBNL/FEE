@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('school');
             $table->date('start');
             $table->date('end');
-            $table->longText('decription')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
 
         });

@@ -55,7 +55,7 @@ class StudentProfile extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function educations(): HasMany
+    public function education(): HasMany
     {
         return $this->hasMany(Education::class, 'student_profile_id', 'id');
     }

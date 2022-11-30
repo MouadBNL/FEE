@@ -116,7 +116,7 @@ class ProfileController extends Controller
 
     public function getExperiences()
     {
-        $user = User::where('id', auth()->user()->id)->with('profile')->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.experiences'])->firstOrFail();
 
         return $user->profile->experiences;
     }
@@ -137,6 +137,32 @@ class ProfileController extends Controller
         $user->profile->experiences()->delete();
         foreach ($data['experiences'] as $exp) {
             $user->profile->experiences()->create($exp);
+        }
+    }
+
+    public function getEducation()
+    {
+        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.education'])->firstOrFail();
+
+        return $user->profile->education;
+    }
+
+    public function updateEducation()
+    {
+        $data = request()->validate([
+            'education' => 'array|present',
+            'education.*.title' => 'string|required',
+            'education.*.school' => 'string|required',
+            'education.*.start' => 'string|required',
+            'education.*.end' => 'string|required',
+            'education.*.description' => 'string|required',
+        ]);
+
+        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.education'])->firstOrFail();
+
+        $user->profile->education()->delete();
+        foreach ($data['education'] as $exp) {
+            $user->profile->education()->create($exp);
         }
     }
 }
