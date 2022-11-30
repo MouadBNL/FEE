@@ -99,21 +99,36 @@
                 </div>
                 @endauth
             </x-card>
-            <x-card title="Experiences" class="mb-8">
+            <x-card title="Experiences" class="mb-8 relative">
                 <div class="grid grid-cols-1 gap-y-8">
-                    <article>
+                    @forelse($user->profile->experiences as $exp)
+                        <article>
+                            <h3 class="text-lg font-medium text-gr-800">{{ $exp->title }}</h3>
+                            <h4 class="text-sm font-bold text-primary">{{ $exp->company }}</h4>
+                            <h4 class="text-sm font-normal text-gr-600 mb-4">{{ $exp->start }} - {{ $exp->end }}</h4>
+                            <p class="text-gr-600">{{ $exp->description }}</p>
+                        </article>
+                    @empty
+                        <span class="text-gr-600">Pas d'experiences spécifiées</span>
+                    @endforelse
+                    {{-- <article>
                         <h3 class="text-lg font-medium text-gr-800">Position title of the Expirence</h3>
                         <h4 class="text-sm font-bold text-primary">Entreprise ABC</h4>
                         <h4 class="text-sm font-normal text-gr-600 mb-4">Du 25 juillet 2022 au 1 septembre 2022 (2 mois)</h4>
                         <p class="text-gr-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam reprehenderit aliquid, obcaecati voluptate nihil est modi blanditiis architecto ipsum nam sint distinctio accusantium dolorum dolores animi dolor veniam itaque rerum.</p>
-                    </article>
-                    <article>
-                        <h3 class="text-lg font-medium text-gr-800">Position title of the Expirence</h3>
-                        <h4 class="text-sm font-bold text-primary">Entreprise ABC</h4>
-                        <h4 class="text-sm font-normal text-gr-600 mb-4">Du 25 juillet 2022 au 1 septembre 2022 (2 mois)</h4>
-                        <p class="text-gr-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam reprehenderit aliquid, obcaecati voluptate nihil est modi blanditiis architecto ipsum nam sint distinctio accusantium dolorum dolores animi dolor veniam itaque rerum.</p>
-                    </article>
+                    </article> --}}
                 </div>
+
+
+                @auth
+                <div class="absolute top-4 right-4">
+                    <edit-button>
+                        <div class="w-full md:2/3 lg:w-1/3">
+                            <edit-student-experiences></edit-student-experiences>
+                        </div>
+                    </edit-button>
+                </div>
+                @endauth
             </x-card>
             <x-card title="Education" class="mb-8">
                 <div class="grid grid-cols-1 gap-y-8">

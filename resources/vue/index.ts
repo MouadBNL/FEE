@@ -12,6 +12,7 @@ import EditStudentHobbies from "./components/auth/student/EditHobbies.vue"
 import EditStudentSkills from "./components/auth/student/EditSkills.vue"
 import EditStudentLanguages from "./components/auth/student/EditLanguages.vue"
 import EditStudentSummary from "./components/auth/student/EditSummary.vue"
+import EditStudentExperiences from "./components/auth/student/EditExperiences.vue"
 
 app.component('hello-world', HelloWorldVue)
 app.component('edit-button', EditButton)
@@ -25,6 +26,7 @@ app.component('edit-student-hobbies', EditStudentHobbies)
 app.component('edit-student-skills', EditStudentSkills)
 app.component('edit-student-languages', EditStudentLanguages)
 app.component('edit-student-summary', EditStudentSummary)
+app.component('edit-student-experiences', EditStudentExperiences)
 
 app.component('n-config-provider', NConfigProvider)
 

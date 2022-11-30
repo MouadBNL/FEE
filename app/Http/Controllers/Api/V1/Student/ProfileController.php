@@ -114,5 +114,29 @@ class ProfileController extends Controller
         return ['message' => 'ok'];
     }
 
-    
+    public function getExperiences()
+    {
+        $user = User::where('id', auth()->user()->id)->with('profile')->firstOrFail();
+
+        return $user->profile->experiences;
+    }
+
+    public function updateExperiences()
+    {
+        $data = request()->validate([
+            'experiences' => 'array|present',
+            'experiences.*.title' => 'string|required',
+            'experiences.*.company' => 'string|required',
+            'experiences.*.start' => 'string|required',
+            'experiences.*.end' => 'string|required',
+            'experiences.*.description' => 'string|required',
+        ]);
+
+        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.experiences'])->firstOrFail();
+
+        $user->profile->experiences()->delete();
+        foreach ($data['experiences'] as $exp) {
+            $user->profile->experiences()->create($exp);
+        }
+    }
 }
