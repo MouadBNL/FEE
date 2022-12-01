@@ -183,24 +183,27 @@
                 </div>
                 @endauth
             </x-card>
-            <x-card title="Diplomes & Certificas" class="">
+            <x-card title="Diplomes & Certificas" class="relative">
                 <div class="grid grid-cols-2 gap-8">
-                    <article>
-                        <h3 class="text-lg font-medium text-gr-800">Titre du diplom</h3>
-                        <h4 class="text-sm font-bold text-primary">Ecole Abc</h4>
-                        <h4 class="text-sm font-normal text-gr-600 mb-4">Reception le 10 septembre 2022</h4>
-                    </article>
-                    <article>
-                        <h3 class="text-lg font-medium text-gr-800">Titre du diplom</h3>
-                        <h4 class="text-sm font-bold text-primary">Ecole Abc</h4>
-                        <h4 class="text-sm font-normal text-gr-600 mb-4">Reception le 10 septembre 2022</h4>
-                    </article>
-                    <article>
-                        <h3 class="text-lg font-medium text-gr-800">Titre du diplom</h3>
-                        <h4 class="text-sm font-bold text-primary">Ecole Abc</h4>
-                        <h4 class="text-sm font-normal text-gr-600 mb-4">Reception le 10 septembre 2022</h4>
-                    </article>
+                    @forelse($user->profile->certifications as $certif)
+                        <article>
+                            <h3 class="text-lg font-medium text-gr-800">{{ $certif->title }}</h3>
+                            <h4 class="text-sm font-bold text-primary">{{ $certif->school }}</h4>
+                            <h4 class="text-sm font-normal text-gr-600 mb-4">{{ $certif->reception }}</h4>
+                        </article>
+                    @empty
+                        
+                    @endforelse
                 </div>
+                @auth
+                <div class="absolute top-4 right-4">
+                    <edit-button>
+                        <div class="w-full md:2/3 lg:w-1/3">
+                            <edit-student-certifications></edit-student-certifications>
+                        </div>
+                    </edit-button>
+                </div>
+                @endauth
             </x-card>
         </div>
         <div class="col-span-1">

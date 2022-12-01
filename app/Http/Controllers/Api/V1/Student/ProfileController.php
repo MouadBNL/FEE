@@ -193,5 +193,29 @@ class ProfileController extends Controller
         }
     }
 
+    public function getCertifications()
+    {
+        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.certifications'])->firstOrFail();
+
+        return $user->profile->certifications;
+    }
+
+    public function updateCertifications()
+    {
+        $data = request()->validate([
+            'certifications' => 'array|present',
+            'certifications.*.title' => 'string|required',
+            'certifications.*.school' => 'string|required',
+            'certifications.*.reception' => 'string|required',
+        ]);
+
+        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.certifications'])->firstOrFail();
+
+        $user->profile->certifications()->delete();
+        foreach ($data['certifications'] as $exp) {
+            $user->profile->certifications()->create($exp);
+        }
+    }
+
 
 }
