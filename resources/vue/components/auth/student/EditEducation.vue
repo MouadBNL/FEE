@@ -68,5 +68,5 @@ onMounted(async () => {
     }
 })
 
-const onCreate = () => { return { title: '', company: '', start: '', end: '', description: '' } }
+const onCreate = () => { return { title: '', school: '', start: '', end: '', description: '' } }
 </script>
