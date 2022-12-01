@@ -12,6 +12,10 @@ class Project extends Model
     
     protected $guarded = [];
 
+    protected $casts = [
+        'skills' => 'array',
+    ];
+
     /**
      * Get the student_profile that owns the Experience
      *

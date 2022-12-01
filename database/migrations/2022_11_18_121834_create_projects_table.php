@@ -17,9 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('student_profile_id')->references('id')->on('student_profiles')->onDelete('cascade');
             $table->string('title');
-            $table->longText('decription')->nullable();
+            $table->longText('description')->nullable();
             $table->string('thumbnail')->nullable();
             $table->json('skills')->nullable();
+            $table->string('link')->nullable();
+            $table->string('git')->nullable();
             $table->timestamps();
 
         });

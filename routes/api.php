@@ -47,4 +47,7 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::get('student/profile/education', [StudentProfileController::class, 'getEducation']);
     Route::put('student/profile/education', [StudentProfileController::class, 'updateEducation']);
 
+    Route::get('student/profile/projects', [StudentProfileController::class, 'getProjects']);
+    Route::put('student/profile/projects', [StudentProfileController::class, 'updateProjects']);
+
 });

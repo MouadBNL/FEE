@@ -165,4 +165,33 @@ class ProfileController extends Controller
             $user->profile->education()->create($exp);
         }
     }
+
+    public function getProjects()
+    {
+        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.projects'])->firstOrFail();
+
+        return $user->profile->projects;
+    }
+
+    public function updateProjects()
+    {
+        $data = request()->validate([
+            'projects' => 'array|present',
+            'projects.*.title' => 'string|required',
+            'projects.*.link' => 'string',
+            'projects.*.git' => 'string',
+            'projects.*.description' => 'string',
+            'projects.*.skills' => 'array',
+            'projects.*.skills.*' => 'string|required',
+        ]);
+
+        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.projects'])->firstOrFail();
+
+        $user->profile->projects()->delete();
+        foreach ($data['projects'] as $exp) {
+            $user->profile->projects()->create($exp);
+        }
+    }
+
+
 }
