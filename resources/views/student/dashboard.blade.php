@@ -1,5 +1,5 @@
 <x-layouts.auth-layout>
-    <section class="grid grid-cols-4 gap-8 container">
+    <section class="grid grid-cols-4 gap-8 container my-12">
 
         <div class="col-span-1">
             <div class="card">

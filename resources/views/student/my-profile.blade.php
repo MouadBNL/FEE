@@ -1,5 +1,14 @@
 <x-layouts.auth-layout>
-    <section class="grid md:grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8 container">
+    <nav class="flex items-center justify-center mb-8">
+        <ul class="flex gap-8">
+            <li><a href="#" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Sommaire</a></li>
+            <li><a href="#" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Experiences</a></li>
+            <li><a href="#" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Education</a></li>
+            <li><a href="#" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Projets</a></li>
+            <li><a href="#" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Diplomes & Certificas</a></li>
+        </ul>
+    </nav>
+    <section class="grid md:grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8 container mb-12">
         <div class="lg:col-span-1">
             <div class="">
                 <div class="card mb-8">
@@ -186,13 +195,13 @@
             <x-card title="Diplomes & Certificas" class="relative">
                 <div class="grid grid-cols-2 gap-8">
                     @forelse($user->profile->certifications as $certif)
-                        <article>
-                            <h3 class="text-lg font-medium text-gr-800">{{ $certif->title }}</h3>
-                            <h4 class="text-sm font-bold text-primary">{{ $certif->school }}</h4>
-                            <h4 class="text-sm font-normal text-gr-600 mb-4">{{ $certif->reception }}</h4>
-                        </article>
+                    <article>
+                        <h3 class="text-lg font-medium text-gr-800">{{ $certif->title }}</h3>
+                        <h4 class="text-sm font-bold text-primary">{{ $certif->school }}</h4>
+                        <h4 class="text-sm font-normal text-gr-600 mb-4">{{ $certif->reception }}</h4>
+                    </article>
                     @empty
-                        
+
                     @endforelse
                 </div>
                 @auth
