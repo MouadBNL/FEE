@@ -34,6 +34,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::created(function(User $user) {
+            $user->generateProfile();
+        });
+    }
+
 
     /**
      * Get the profile associated with the User
@@ -43,5 +51,22 @@ class User extends Authenticatable
     public function profile(): HasOne
     {
         return $this->hasOne(StudentProfile::class, 'user_id', 'id');
+    }
+
+    public function checkProfile()
+    {
+        return isset($this->profile);
+    }
+
+    public function generateProfile(): Void
+    {
+        if($this->type == 'student') {
+            $this->profile()->create([
+                'links' => [],
+                'skills' => [],
+                'languages' => [],
+                'hobbies' => [],
+            ]);
+        }
     }
 }
