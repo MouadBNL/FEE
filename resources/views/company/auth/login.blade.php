@@ -2,7 +2,7 @@
     <div class="h-screen bg-gray-100 flex items-center justify-center p-4">
 
 
-        <x-card title="Espace Edutiant" class="w-full md:w-2/3 lg:w-1/3">
+        <x-card title="Espace Entreprise" class="w-full md:w-2/3 lg:w-1/3">
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="mb-4">

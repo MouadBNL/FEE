@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\PageController;
 use App\Http\Controllers\Student\Auth\LoginController as StudentLoginController;
+use App\Http\Controllers\Company\Auth\LoginController as CompanyLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +30,12 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 Route::group(['middleware' => 'guest'], function() {
-    Route::get('student/login', [StudentLoginController::class, 'create'])->name('student.login.create');
-    Route::get('student/login', [StudentLoginController::class, 'create'])->name('login');
-    Route::post('student/login', [StudentLoginController::class, 'store'])->name('student.login.store');
+
+    Route::group(['prefix' => 'auth'], function() {
+        Route::post('login', [AuthController::class, 'store'])->name('login');
+        Route::delete('logout', [AuthController::class, 'destory'])->name('logout');
+    });
+    
+    Route::view('student/login', 'student.auth.login');
+    Route::view('company/login', 'company.auth.login');
 });
