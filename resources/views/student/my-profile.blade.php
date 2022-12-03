@@ -201,7 +201,7 @@
                         <h4 class="text-sm font-normal text-gr-600 mb-4">{{ $certif->reception }}</h4>
                     </article>
                     @empty
-
+                        <span class="text-gr-600">Pas de diplomes ou/et certificas spécifiés</span>
                     @endforelse
                 </div>
                 @auth
