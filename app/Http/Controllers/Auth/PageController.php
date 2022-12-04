@@ -13,12 +13,12 @@ class PageController extends Controller
         switch (auth()->user()->type) {
             case 'student':
                 return view('student.dashboard', [
-                    'user' => User::where('id', auth()->user()->id)->with('profile')->firstOrFail()
+                    'user' => User::student()->where('id', auth()->user()->id)->firstOrFail()
                 ]);
                 break;
             case 'company':
                 return view('company.dashboard', [
-                    'user' => User::where('id', auth()->user()->id)->with('profile')->firstOrFail()
+                    'user' => User::company()->where('id', auth()->user()->id)->firstOrFail()
                 ]);
                 break;
 
@@ -30,7 +30,7 @@ class PageController extends Controller
 
     public function myprofile()
     {
-        $user = User::where('id', auth()->user()->id)->with('profile')->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->firstOrFail();
         // if(auth()->user()->type == "student") {
         return view('student.my-profile', [
             'user' => $user

@@ -9,8 +9,6 @@
         </ul>
     </nav>
 
-    @dd($user->profile)
-
     <section class="grid md:grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8 container mb-12">
         <div class="lg:col-span-1">
             <div class="">

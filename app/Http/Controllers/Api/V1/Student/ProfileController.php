@@ -11,7 +11,7 @@ class ProfileController extends Controller
 
     public function getLinks()
     {
-        $user = User::where('id', auth()->user()->id)->with('profile')->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with('studentProfile')->firstOrFail();
 
         return $user->profile->links;
     }
@@ -23,7 +23,7 @@ class ProfileController extends Controller
             'links.*' => 'string|required|url'
         ]);
 
-        User::where('id', auth()->user()->id)->firstOrFail()->profile()->update([
+        User::where('id', auth()->user()->id)->firstOrFail()->studentProfile()->update([
             'links' => json_encode($data['links'])
         ]);
 
@@ -32,7 +32,7 @@ class ProfileController extends Controller
 
     public function getHobbies()
     {
-        $user = User::where('id', auth()->user()->id)->with('profile')->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with('studentProfile')->firstOrFail();
 
         return $user->profile->hobbies;
     }
@@ -44,7 +44,7 @@ class ProfileController extends Controller
             'hobbies.*' => 'string|required'
         ]);
 
-        User::where('id', auth()->user()->id)->firstOrFail()->profile()->update([
+        User::where('id', auth()->user()->id)->firstOrFail()->studentProfile()->update([
             'hobbies' => json_encode($data['hobbies'])
         ]);
 
@@ -53,7 +53,7 @@ class ProfileController extends Controller
 
     public function getSkills()
     {
-        $user = User::where('id', auth()->user()->id)->with('profile')->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with('studentProfile')->firstOrFail();
 
         return $user->profile->skills;
     }
@@ -65,7 +65,7 @@ class ProfileController extends Controller
             'skills.*' => 'string|required'
         ]);
 
-        User::where('id', auth()->user()->id)->firstOrFail()->profile()->update([
+        User::where('id', auth()->user()->id)->firstOrFail()->studentProfile()->update([
             'skills' => json_encode($data['skills'])
         ]);
 
@@ -74,7 +74,7 @@ class ProfileController extends Controller
 
     public function getLanguages()
     {
-        $user = User::where('id', auth()->user()->id)->with('profile')->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with('studentProfile')->firstOrFail();
 
         return $user->profile->languages;
     }
@@ -87,7 +87,7 @@ class ProfileController extends Controller
             'languages.*.value' => 'string|required'
         ]);
 
-        User::where('id', auth()->user()->id)->firstOrFail()->profile()->update([
+        User::where('id', auth()->user()->id)->firstOrFail()->studentProfile()->update([
             'languages' => json_encode($data['languages'])
         ]);
 
@@ -96,7 +96,7 @@ class ProfileController extends Controller
 
     public function getSummary()
     {
-        $user = User::where('id', auth()->user()->id)->with('profile')->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with('studentProfile')->firstOrFail();
 
         return $user->profile->summary;
     }
@@ -107,7 +107,7 @@ class ProfileController extends Controller
             'summary' => 'present|string'
         ]);
 
-        User::where('id', auth()->user()->id)->firstOrFail()->profile()->update([
+        User::where('id', auth()->user()->id)->firstOrFail()->studentProfile()->update([
             'summary' => $data['summary']
         ]);
 
@@ -116,7 +116,7 @@ class ProfileController extends Controller
 
     public function getExperiences()
     {
-        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.experiences'])->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with(['studentProfile', 'studentProfile.experiences'])->firstOrFail();
 
         return $user->profile->experiences;
     }
@@ -132,7 +132,7 @@ class ProfileController extends Controller
             'experiences.*.description' => 'string|required',
         ]);
 
-        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.experiences'])->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with(['studentProfile', 'studentProfile.experiences'])->firstOrFail();
 
         $user->profile->experiences()->delete();
         foreach ($data['experiences'] as $exp) {
@@ -142,7 +142,7 @@ class ProfileController extends Controller
 
     public function getEducation()
     {
-        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.education'])->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with(['studentProfile', 'studentProfile.education'])->firstOrFail();
 
         return $user->profile->education;
     }
@@ -158,7 +158,7 @@ class ProfileController extends Controller
             'education.*.description' => 'string|required',
         ]);
 
-        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.education'])->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with(['studentProfile', 'studentProfile.education'])->firstOrFail();
 
         $user->profile->education()->delete();
         foreach ($data['education'] as $exp) {
@@ -168,7 +168,7 @@ class ProfileController extends Controller
 
     public function getProjects()
     {
-        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.projects'])->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with(['studentProfile', 'studentProfile.projects'])->firstOrFail();
 
         return $user->profile->projects;
     }
@@ -185,7 +185,7 @@ class ProfileController extends Controller
             'projects.*.skills.*' => 'string|required',
         ]);
 
-        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.projects'])->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with(['studentProfile', 'studentProfile.projects'])->firstOrFail();
 
         $user->profile->projects()->delete();
         foreach ($data['projects'] as $exp) {
@@ -195,7 +195,7 @@ class ProfileController extends Controller
 
     public function getCertifications()
     {
-        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.certifications'])->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with(['studentProfile', 'studentProfile.certifications'])->firstOrFail();
 
         return $user->profile->certifications;
     }
@@ -209,7 +209,7 @@ class ProfileController extends Controller
             'certifications.*.reception' => 'string|required',
         ]);
 
-        $user = User::where('id', auth()->user()->id)->with(['profile', 'profile.certifications'])->firstOrFail();
+        $user = User::where('id', auth()->user()->id)->with(['studentProfile', 'studentProfile.certifications'])->firstOrFail();
 
         $user->profile->certifications()->delete();
         foreach ($data['certifications'] as $exp) {

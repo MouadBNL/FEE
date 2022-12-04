@@ -1,6 +1,5 @@
 <x-layouts.auth-layout>
 
-    @dd($user->profile)
 
     <section class="grid grid-cols-4 gap-8 container my-12">
 
