@@ -26,9 +26,6 @@ Route::group(['prefix' => 'auth'], function() {
 });
 
 Route::group(['middleware' => 'auth'], function(){
-    /**
-     * Routing basic Auth pages (dashboard, profile, ...)
-     */
     Route::get('dashboard', [PageController::class, 'dashboard'])->name('dashboard');
     Route::get('myprofile', [PageController::class, 'myprofile'])->name('myprofile');
 });

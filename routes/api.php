@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\Company\ProfileController as CompanyProfileController;
 use App\Http\Controllers\Api\V1\Student\ProfileController as StudentProfileController;
 use App\Http\Controllers\Api\V1\UserInfoController;
 use Illuminate\Http\Request;
@@ -25,6 +26,11 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::get('myprofile', [UserInfoController::class, 'getUserInfo']);
     Route::post('myprofile/user-info', [UserInfoController::class, 'update']);
 
+
+    /**
+     * Routing Student request
+     * TODO: Add middleware for type verification
+     */
 
     Route::get('student/profile/links', [StudentProfileController::class, 'getLinks']);
     Route::put('student/profile/links', [StudentProfileController::class, 'updateLinks']);
@@ -53,4 +59,12 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::get('student/profile/certifications', [StudentProfileController::class, 'getCertifications']);
     Route::put('student/profile/certifications', [StudentProfileController::class, 'updateCertifications']);
 
+
+    /**
+     * Routing Student request
+     * TODO: Add middleware for type verification
+     */
+
+    Route::get('company/profile/about', [CompanyProfileController::class, 'getAbout']);
+    Route::put('company/profile/about', [CompanyProfileController::class, 'updateAbout']);
 });

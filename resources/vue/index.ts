@@ -17,12 +17,14 @@ import EditStudentEducation from "./components/auth/student/EditEducation.vue"
 import EditStudentProjects from "./components/auth/student/EditProjects.vue"
 import EditStudentCertifications from "./components/auth/student/EditCertifications.vue"
 
+import EditCompanyAbout from "./components/auth/company/EditAbout.vue"
+
 app.component('hello-world', HelloWorldVue)
 app.component('edit-button', EditButton)
 app.component('edit-user-info', EditUserInfo)
 
 /**
- * Student Profile component
+ * Student Profile components
  */
 app.component('edit-student-links', EditStudentLinks)
 app.component('edit-student-hobbies', EditStudentHobbies)
@@ -33,6 +35,11 @@ app.component('edit-student-experiences', EditStudentExperiences)
 app.component('edit-student-education', EditStudentEducation)
 app.component('edit-student-projects', EditStudentProjects)
 app.component('edit-student-certifications', EditStudentCertifications)
+
+/**
+ * Company Profile components
+ */
+app.component('edit-company-about', EditCompanyAbout)
 
 app.component('n-config-provider', NConfigProvider)
 

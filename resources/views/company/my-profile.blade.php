@@ -9,7 +9,7 @@
                 <h3 class="mt-2 text-center">IT Services and IT Consulting</h3>
                 <hr class="mt-5 mb-5 bg-gr-400 text-gr-400 border-gr-400">
                 <h2 class="mt-5 text-center text-lg font-medium text-gray-50">501-1,000</h2>
-                <h3 class="mt-2 text-center text-gray-200">employees</h3>
+                <h3 class="mt-2 text-center text-gray-200">employés</h3>
             </div>
         </div>
     </section>
@@ -17,29 +17,48 @@
     <section class="grid grid-cols-4 gap-8 container my-12">
 
         <div class="col-span-1">
-            <x-card title="À propos">
+            <x-card title="À propos" class="relative">
                 <div class="grid grid-cols-1 gap-y-4">
-                    <div>
-                        <h5 class="text-sm text-gr-600">Industrie</h5>
-                        <p class="text-sm  font-semibold text-gr-800">IT Services and IT Consulting</p>
-                    </div>
-                    <div>
-                        <h5 class="text-sm text-gr-600">Taille de l'entreprise</h5>
-                        <p class="text-sm  font-semibold text-gr-800">501-1,000 employés</p>
-                    </div>
-                    <div>
-                        <h5 class="text-sm text-gr-600">Fondée</h5>
-                        <p class="text-sm  font-semibold text-gr-800">2008</p>
-                    </div>
-                    <div>
-                        <h5 class="text-sm text-gr-600">Headquarters</h5>
-                        <p class="text-sm  font-semibold text-gr-800">Fès , Fès/Meknes</p>
-                    </div>
-                    <div>
-                        <h5 class="text-sm text-gr-600">Spécialitées</h5>
-                        <p class="text-sm  font-semibold text-gr-800">automabile, aéronauqtiue, télécom et réseau, and IT SOFTWARE</p>
-                    </div>
+                    @if($user->profile->industry && !empty($user->profile->industry))
+                        <div>
+                            <h5 class="text-sm text-gr-600">Industrie</h5>
+                            <p class="text-sm  font-semibold text-gr-800">{{ $user->profile->industry }}</p>
+                        </div>
+                    @endif
+                    @if($user->profile->company_size && !empty($user->profile->company_size))
+                        <div>
+                            <h5 class="text-sm text-gr-600">Taille de l'entreprise</h5>
+                            <p class="text-sm  font-semibold text-gr-800">{{ $user->profile->company_size }} employés</p>
+                        </div>
+                    @endif
+                    @if($user->profile->founding_year && !empty($user->profile->founding_year))
+                        <div>
+                            <h5 class="text-sm text-gr-600">Fondée</h5>
+                            <p class="text-sm  font-semibold text-gr-800">{{ $user->profile->founding_year }}</p>
+                        </div>
+                    @endif
+                    @if($user->profile->address && !empty($user->profile->address))
+                        <div>
+                            <h5 class="text-sm text-gr-600">Adresse</h5>
+                            <p class="text-sm  font-semibold text-gr-800">{{ $user->profile->address }}</p>
+                        </div>
+                    @endif
+                    @if($user->profile->specialties && !empty($user->profile->specialties))
+                        <div>
+                            <h5 class="text-sm text-gr-600">Spécialitées</h5>
+                            <p class="text-sm  font-semibold text-gr-800">{{ implode(', ', $user->profile->specialties) }}</p>
+                        </div>
+                    @endif
                 </div>
+                @auth
+                <div class="absolute top-4 right-4">
+                    <edit-button>
+                        <div class="w-full md:2/3 lg:w-1/3">
+                            <edit-company-about></edit-company-abo>
+                        </div>
+                    </edit-button>
+                </div>
+                @endauth
             </x-card>
         </div>
         <div class="col-span-3">
