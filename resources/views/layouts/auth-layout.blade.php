@@ -68,6 +68,14 @@
                     </div>
                     <div class="h-11 aspect-square rounded-full bg-gr-100 border border-primary">
                     </div>
+
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <x-button>
+                            Logout
+                        </x-button>
+                    </form>
                 </nav>
             </div>
         </header>

@@ -19,6 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+
+Route::group(['prefix' => 'auth'], function() {
+    Route::post('login', [AuthController::class, 'store'])->name('login')->middleware('guest');
+    Route::delete('logout', [AuthController::class, 'destroy'])->name('logout')->middleware('auth');
+});
+
 Route::group(['middleware' => 'auth'], function(){
     /**
      * Routing basic Auth pages (dashboard, profile, ...)
@@ -28,11 +34,6 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 Route::group(['middleware' => 'guest'], function() {
-
-    Route::group(['prefix' => 'auth'], function() {
-        Route::post('login', [AuthController::class, 'store'])->name('login');
-        Route::delete('logout', [AuthController::class, 'destory'])->name('logout');
-    });
     
     Route::view('student/login', 'student.auth.login');
     Route::view('company/login', 'company.auth.login');
