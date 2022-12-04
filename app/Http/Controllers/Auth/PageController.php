@@ -10,19 +10,31 @@ class PageController extends Controller
 {
     public function dashboard()
     {
-        // if(auth()->user()->type == "student") {
-            return view('student.dashboard');
-        // }
-        // return redirect()->route('welcome');
+        switch (auth()->user()->type) {
+            case 'student':
+                return view('student.dashboard', [
+                    'user' => User::where('id', auth()->user()->id)->with('profile')->firstOrFail()
+                ]);
+                break;
+            case 'company':
+                return view('company.dashboard', [
+                    'user' => User::where('id', auth()->user()->id)->with('profile')->firstOrFail()
+                ]);
+                break;
+
+            default:
+                return redirect()->route('welcome');
+                break;
+        }
     }
 
     public function myprofile()
     {
         $user = User::where('id', auth()->user()->id)->with('profile')->firstOrFail();
         // if(auth()->user()->type == "student") {
-            return view('student.my-profile', [
-                'user' => $user
-            ]);
+        return view('student.my-profile', [
+            'user' => $user
+        ]);
         // }
         // return redirect()->route('welcome');
     }

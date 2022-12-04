@@ -37,7 +37,7 @@ class User extends Authenticatable
     protected static function boot()
     {
         parent::boot();
-        static::created(function(User $user) {
+        static::created(function (User $user) {
             $user->generateProfile();
         });
     }
@@ -50,6 +50,9 @@ class User extends Authenticatable
      */
     public function profile(): HasOne
     {
+        if ($this->type == 'company') {
+            return $this->hasOne(CompanyProfile::class, 'user_id', 'id');
+        }
         return $this->hasOne(StudentProfile::class, 'user_id', 'id');
     }
 
@@ -60,13 +63,15 @@ class User extends Authenticatable
 
     public function generateProfile(): Void
     {
-        if($this->type == 'student') {
+        if ($this->type == 'student') {
             $this->profile()->create([
                 'links' => [],
                 'skills' => [],
                 'languages' => [],
                 'hobbies' => [],
             ]);
+        } else if($this->type == 'company') {
+            $this->profile()->create();
         }
     }
 }

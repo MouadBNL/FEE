@@ -8,6 +8,9 @@
             <li><a href="#" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Diplomes & Certificas</a></li>
         </ul>
     </nav>
+
+    @dd($user->profile)
+
     <section class="grid md:grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8 container mb-12">
         <div class="lg:col-span-1">
             <div class="">
