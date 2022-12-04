@@ -1,10 +1,10 @@
 <template>
-    <n-card title="Modifier votre sommaire" :bordered="false" size="huge" role="dialog" aria-modal="true">
+    <n-card title="Modifier votre description" :bordered="false" size="huge" role="dialog" aria-modal="true">
 
         <n-input
             type="textarea"
-            placeholder="sommaire"
-            v-model:value="summary"
+            placeholder="description"
+            v-model:value="description"
         />
 
         <template #footer>
@@ -21,14 +21,14 @@ import { ref, onMounted } from 'vue'
 import axios from '../../../services/axios';
 
 
-const summary = ref("")
+const description = ref("")
 const loading = ref(false)
 
 const submit = async () => {
     try {
         loading.value = true
-        await axios.put('api/student/profile/summary', {
-            summary: summary.value
+        await axios.put('api/company/profile/description', {
+            description: description.value
         })
         window.location.reload()
     } catch (e) {
@@ -38,8 +38,8 @@ const submit = async () => {
 
 onMounted(async () => {
     try {
-        const req = await axios.get('api/student/profile/summary')
-        summary.value = req.data
+        const req = await axios.get('api/company/profile/description')
+        description.value = req.data
     } catch (err) {
         alert(err)
     }

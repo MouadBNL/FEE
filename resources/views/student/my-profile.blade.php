@@ -95,7 +95,7 @@
         </div>
         <div class="lg:col-span-2">
             <x-card title="Sommaire" class="mb-8 relative">
-                <p class="text-gr-600">
+                <p class="text-gr-600 whitespace-pre-wrap">
                     {{ $user->profile->summary ?? 'Pas de sommaire spécifié' }}
                 </p>
 

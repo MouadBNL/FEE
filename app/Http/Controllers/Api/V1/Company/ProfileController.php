@@ -34,4 +34,21 @@ class ProfileController extends Controller
 
         User::company()->where('id', auth()->user()->id)->firstOrFail()->companyProfile()->update($data);
     }
+    public function getDescription()
+    {
+        $user = User::company()->where('id', auth()->user()->id)->with('companyProfile')->firstOrFail();
+
+        return $user->profile->description;
+    }
+
+    public function updateDescription()
+    {
+        $data = request()->validate([
+            'description' => 'string|nullable'
+        ]);
+
+        User::company()->where('id', auth()->user()->id)->firstOrFail()->companyProfile()->update([
+            'description' => $data['description']
+        ]);
+    }
 }

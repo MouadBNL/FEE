@@ -67,4 +67,7 @@ Route::middleware(['auth:sanctum'])->group(function() {
 
     Route::get('company/profile/about', [CompanyProfileController::class, 'getAbout']);
     Route::put('company/profile/about', [CompanyProfileController::class, 'updateAbout']);
+
+    Route::get('company/profile/description', [CompanyProfileController::class, 'getDescription']);
+    Route::put('company/profile/description', [CompanyProfileController::class, 'updateDescription']);
 });

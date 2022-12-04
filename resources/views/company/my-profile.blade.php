@@ -50,6 +50,7 @@
                         </div>
                     @endif
                 </div>
+
                 @auth
                 <div class="absolute top-4 right-4">
                     <edit-button>
@@ -62,34 +63,22 @@
             </x-card>
         </div>
         <div class="col-span-3">
-            <x-card title="Description">
-                <p class="text-gr-600">
-                    ALTEN Group supports the development strategy of its customers in the fields of innovation, R&D and technological information systems.<br>
-                    Created 30 years ago, the Group has become a world leader in Engineering and Technology consulting.<br>
-                    <br>
-                    24 700 highly qualified engineers carry out studies and conception projects for the Technical and Information Systems Divisions of major customers in the industrial, telecommunications and Service sectors.<br>
-                    <br>
-                    Our business lines:<br>
-                    <br>
-                    • ENGINEERING<br>
-                    R&D and Manufacturing outsourcing :<br>
-                    > Consulting<br>
-                    > R&D externalization / Design & Development<br>
-                    > Manufacturing engineering<br>
-                    > Supply chain and Quality<br>
-                    > Testing<br>
-                    > Customer Support training<br>
-                    <br>
-                    • ENTERPRISE SERVICES<br>
-                    Internal IT:<br>
-                    > Consulting functional knowledge<br>
-                    > technical expertise (Digital, BI...)<br>
-                    > IT applications / Life Cycle Management<br>
-                    <br>
-                    Internal Network:<br>
-                    > Architecture and Security<br>
-                    > Deployment Integration Support<br>
-                </p>
+            <x-card title="Description" class="relative">
+                @if($user->profile->description)
+                <div class="whitespace-pre-line text-gr-600"> {{ $user->profile->description }}</div>
+                @else
+                    <span class="text-gr-600">Pas de description spécifiées</span>
+                @endif
+
+                @auth
+                <div class="absolute top-4 right-4">
+                    <edit-button>
+                        <div class="w-full md:2/3 lg:w-1/3">
+                            <edit-company-description></edit-company-description>
+                        </div>
+                    </edit-button>
+                </div>
+                @endauth
             </x-card>
         </div>
     </section>

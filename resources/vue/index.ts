@@ -18,6 +18,7 @@ import EditStudentProjects from "./components/auth/student/EditProjects.vue"
 import EditStudentCertifications from "./components/auth/student/EditCertifications.vue"
 
 import EditCompanyAbout from "./components/auth/company/EditAbout.vue"
+import EditCompanyDescription from "./components/auth/company/EditDescription.vue"
 
 app.component('hello-world', HelloWorldVue)
 app.component('edit-button', EditButton)
@@ -40,6 +41,7 @@ app.component('edit-student-certifications', EditStudentCertifications)
  * Company Profile components
  */
 app.component('edit-company-about', EditCompanyAbout)
+app.component('edit-company-description', EditCompanyDescription)
 
 app.component('n-config-provider', NConfigProvider)
 
