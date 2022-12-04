@@ -52,6 +52,15 @@ class User extends Authenticatable
         return $query->where('type', 'company');
     }
 
+    public function getProfileAttribute()
+    {
+        if($this->type=="company") {
+            return $this->companyProfile;
+        } else {
+            return $this->studentProfile;
+        }
+    }
+
     /**
      * Get the studentProfile associated with the User
      *
@@ -80,14 +89,14 @@ class User extends Authenticatable
     public function generateProfile(): Void
     {
         if ($this->type == 'student') {
-            $this->profile()->create([
+            $this->studentProfile()->create([
                 'links' => [],
                 'skills' => [],
                 'languages' => [],
                 'hobbies' => [],
             ]);
         } else if ($this->type == 'company') {
-            $this->profile()->create();
+            $this->companyProfile()->create();
         }
     }
 }

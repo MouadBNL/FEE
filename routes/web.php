@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\PageController;
-use App\Http\Controllers\Student\Auth\LoginController as StudentLoginController;
-use App\Http\Controllers\Company\Auth\LoginController as CompanyLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
