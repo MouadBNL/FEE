@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('company_size')->nullable();
             $table->string('founding_year')->nullable();
             $table->string('adresse')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('website')->nullable();
             $table->string('specialties')->default('[]');
             $table->timestamps();
         });
