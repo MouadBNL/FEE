@@ -42,18 +42,34 @@ class User extends Authenticatable
         });
     }
 
+    public function scopeStudent($query)
+    {
+        return $query->where('type', 'student');
+    }
+
+    public function scopeCompany($query)
+    {
+        return $query->where('type', 'company');
+    }
 
     /**
-     * Get the profile associated with the User
+     * Get the studentProfile associated with the User
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function profile(): HasOne
+    public function studentProfile(): HasOne
     {
-        if ($this->type == 'company') {
-            return $this->hasOne(CompanyProfile::class, 'user_id', 'id');
-        }
-        return $this->hasOne(StudentProfile::class, 'user_id', 'id');
+        return $this->hasOne(StudentProfile::class);
+    }
+
+    /**
+     * Get the companyProfile associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function companyProfile(): HasOne
+    {
+        return $this->hasOne(CompanyProfile::class);
     }
 
     public function checkProfile()
@@ -70,7 +86,7 @@ class User extends Authenticatable
                 'languages' => [],
                 'hobbies' => [],
             ]);
-        } else if($this->type == 'company') {
+        } else if ($this->type == 'company') {
             $this->profile()->create();
         }
     }
