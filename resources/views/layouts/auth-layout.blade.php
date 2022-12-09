@@ -24,7 +24,7 @@
     <meta name="vueuc-style" />
 </head>
 <body class="antialiased font-sans">
-    <div id="app" class="flex min-h-screen flex-col bg-gray-50">
+    <div class="flex min-h-screen flex-col bg-gray-50">
         <header class="p-4 border-b-2 border-gr-100 bg-white">
             <div class="container mx-auto flex justify-between">
                 <nav class="flex items-center">
@@ -82,8 +82,8 @@
 
         <main class="">
             <n-config-provider :theme-overrides="{ 'common': { 'primaryColor': '#17888AFF', 'primaryColorHover': '#1F9EA0FF', 'primaryColorPressed': '#0E6365FF', 'primaryColorSuppl': '#17888AFF' } }">
-                {{ $slot ?? '' }}
             </n-config-provider>
+            {{ $slot ?? '' }}
         </main>
 
 
