@@ -10,7 +10,7 @@
                     <x-input name="email" type="email" required placeholder="abc@efd.com" />
                 </div>
                 <div class="mb-6">
-                    <label for="email" class="text-gr-600 pb-1">Password</label>
+                    <label for="password" class="text-gr-600 pb-1">Password</label>
                     <x-input name="password" type="password" required placeholder="password" />
                 </div>
                 <div class="flex justify-end">

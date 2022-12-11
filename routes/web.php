@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\PageController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,7 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'auth'], function() {
     Route::post('login', [AuthController::class, 'store'])->name('login')->middleware('guest');
+    Route::post('register', [RegisterController::class, 'store'])->name('register')->middleware('guest');
     Route::delete('logout', [AuthController::class, 'destroy'])->name('logout')->middleware('auth');
 });
 
@@ -31,7 +33,7 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 Route::group(['middleware' => 'guest'], function() {
-    
-    Route::view('student/login', 'student.auth.login');
-    Route::view('company/login', 'company.auth.login');
+    Route::view('student/login', 'student.auth.login')->name('student.login');
+    Route::view('company/login', 'company.auth.login')->name('company.login');
+    Route::view('student/register', 'student.auth.register')->name('student.register');
 });
