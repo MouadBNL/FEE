@@ -6,7 +6,7 @@
             <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <div class="mb-4">
-                    <label for="name" class="text-gr-600 pb-1">Nom et Prenom</label>
+                    <label for="name" class="text-gr-600 pb-1">Nom et Prénom</label>
                     <x-input name="name" type="text" required placeholder="John Doe" />
                 </div>
                 <div class="mb-4">

@@ -3,25 +3,60 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserInfoController extends Controller
 {
     public function getUserInfo()
     {
+        $user = User::wherte('id', auth()->user()->id)->firstOrFail();
         return [
-            "name" => auth()->user()->name
+            "name" => $user['name'],
+            "email" => $user['email'],
+            "picture" => $user['picture']
         ];
     }
 
-    public function update()
+    public function updateAuthInfo()
     {
         $data = request()->validate([
-            'name' => 'required|string|min:4|max:32'
+            'name' => 'required|string|min:4|max:32',
+            'email' => 'required|string|email|unique:users,email,' . auth()->user()->id
         ]);
 
-        auth()->user()->update([
-            'name' => $data['name']
+        User::where('id', auth()->user()->id)->update([
+            'name' => $data['name'],
+            'email' => $data['email']
         ]);
     }
+
+    public function updatePicture() {
+        request()->validate([
+            'picture' => 'required|image|max:8192', // 8MB
+        ]);
+
+        $pic = request()->file('picture');
+
+        $picName = Carbon::now()->format('Y-m-d-H') . uniqid() . '.' . $pic->getClientOriginalExtension();
+
+        $path = $pic->storeAs('public/pictures', $picName);
+
+        User::where('id', auth()->user()->id)->update([
+            'picture' => '/storage/pictures/' . $picName
+        ]);
+    }
+
+    public function updatePassword() {
+        $data = request()->validate([
+            'password' => 'string|required|min:4|max:30|confirmed'
+        ]);
+
+        User::where('id', auth()->user()->id)->update([
+            'password' => Hash::make($data['password'])
+        ]);
+    }
+
 }

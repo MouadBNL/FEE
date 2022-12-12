@@ -23,8 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::middleware(['auth:sanctum'])->group(function() {
-    Route::get('myprofile', [UserInfoController::class, 'getUserInfo']);
-    Route::post('myprofile/user-info', [UserInfoController::class, 'update']);
+    Route::get('profile', [UserInfoController::class, 'getUserInfo']);
+    Route::put('profile/auth-info', [UserInfoController::class, 'updateAuthInfo']);
+    Route::put('profile/password', [UserInfoController::class, 'updatePassword']);
+    Route::put('profile/picture', [UserInfoController::class, 'updatePicture']);
 
 
     /**

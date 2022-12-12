@@ -14,8 +14,8 @@
             <div class="">
                 <div class="card mb-8">
                     <div class="pt-14 pb-8 px-8 border-b border-gr-100 relative">
-                        <div class="mx-auto h-32 w-32 rounded-full bg-gr-100 border border-primary aspect-square mb-8">
-                            {{-- Image profile --}}
+                        <div class="mx-auto h-32 w-32 overflow-hidden mb-8">
+                            <img class="h-32 w-32 border-2 border-primary rounded-full object-cover" src="{{ $user->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" />
                         </div>
 
                         <h3 class="h3 text-center">{{ auth()->user()->name }}</h3>
