@@ -6,14 +6,19 @@ use Illuminate\View\Component;
 
 class AuthLayout extends Component
 {
+
+    public $page_title;
+    public $page_name;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(String $pageTitle = "Forum Ensak Entreprise", String $pageName = "Dashboard")
     {
-        //
+        $this->page_name = $pageName;
+        $this->page_title = $pageTitle;
     }
 
     /**

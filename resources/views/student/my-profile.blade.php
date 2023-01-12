@@ -1,4 +1,4 @@
-<x-layouts.auth-layout>
+<x-layouts.auth-layout page-name="Mon profil">
     <nav class="flex items-center justify-center mb-8">
         <ul class="flex gap-8">
             <li><a href="#" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Sommaire</a></li>

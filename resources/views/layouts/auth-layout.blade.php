@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Forum Ensak Entreprise</title>
+    <title>{{ $page_title }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,8 +51,13 @@
                             </svg>
                         </a>
                     </div>
-                    <h2 class="h2">Dashboard</h2>
+                    <h2 class="h2">{{ $page_name }}</h2>
                 </nav>
+
+                    <ul class="flex items-center gap-8 my-auto">
+                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                        <li><a href="{{ route('myprofile') }}">Mon Profil</a></li>
+                    </ul>
 
                 <nav class="flex items-center gap-7">
                     <div class="h-11 aspect-square rounded-full bg-gray-50 hover:bg-gray-200 flex items-center justify-center">
