@@ -7,6 +7,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class UserInfoController extends Controller
 {
@@ -34,6 +35,7 @@ class UserInfoController extends Controller
     }
 
     public function updatePicture() {
+        Log::info("Request" . json_encode(request()));
         request()->validate([
             'picture' => 'required|image|max:8192', // 8MB
         ]);

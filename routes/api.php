@@ -26,7 +26,7 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::get('profile', [UserInfoController::class, 'getUserInfo']);
     Route::put('profile/auth-info', [UserInfoController::class, 'updateAuthInfo']);
     Route::put('profile/password', [UserInfoController::class, 'updatePassword']);
-    Route::put('profile/picture', [UserInfoController::class, 'updatePicture']);
+    Route::post('profile/picture', [UserInfoController::class, 'updatePicture']);
 
 
     /**

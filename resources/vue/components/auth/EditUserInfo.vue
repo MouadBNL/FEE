@@ -79,7 +79,7 @@ const editProfilePicture = async ({ file }) => {
     const formData = new FormData()
     formData.append('picture', file.file as File)
     try {
-        await axios.put('/api/profile/picture', formData, {
+        await axios.post('/api/profile/picture', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             }
