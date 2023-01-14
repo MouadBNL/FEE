@@ -24,4 +24,23 @@ class ListingController extends Controller
             'edit' => false
         ]);
     }
+
+    public function listStudents()
+    {
+        $students = User::student()->with('studentProfile')->paginate(2);
+
+        return view('list-students',[
+            'students' => $students,
+        ]);
+    }
+
+    public function showStudent($id)
+    {
+        $company = User::student()->with('studentProfile')->where('id', $id)->firstOrFail();
+
+        return view('student.my-profile', [
+            'user' => $company,
+            'edit' => false
+        ]);
+    }
 }

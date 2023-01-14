@@ -21,7 +21,7 @@
                         <h3 class="h3 text-center">{{ auth()->user()->name }}</h3>
                         <h4 class="h4 text-center">Genie Informatique 4eme</h4>
 
-                        @auth
+                        @if($edit)
                         <div class="absolute top-4 right-4">
                             <edit-button>
                                 <div class="w-full md:2/3 lg:w-1/3">
@@ -29,7 +29,7 @@
                                 </div>
                             </edit-button>
                         </div>
-                        @endauth
+                        @endif
                     </div>
                     <div class="py-8 px-8 grid grid-cols-1 gap-y-4">
                         {{-- <div class="flex items-center">
@@ -62,13 +62,13 @@
                         <span class="text-gr-600">Pas de Liens spécifié</span>
                         @endforelse
 
-                        @auth
+                        @if($edit)
                         <edit-button>
                             <div class="w-full md:2/3 lg:w-1/3">
                                 <edit-student-links></edit-student-links>
                             </div>
                         </edit-button>
-                        @endauth
+                        @endif
                     </div>
                 </div>
                 <x-card title="Loisirs" class="mb-8 relative">
@@ -81,7 +81,7 @@
                         @endforelse
                     </div>
 
-                    @auth
+                    @if($edit)
                     <div class="absolute top-4 right-4">
                         <edit-button>
                             <div class="w-full md:2/3 lg:w-1/3">
@@ -89,7 +89,7 @@
                             </div>
                         </edit-button>
                     </div>
-                    @endauth
+                    @endif
                 </x-card>
             </div>
         </div>
@@ -99,7 +99,7 @@
                     {{ $user->profile->summary ?? 'Pas de sommaire spécifié' }}
                 </p>
 
-                @auth
+                @if($edit)
                 <div class="absolute top-4 right-4">
                     <edit-button>
                         <div class="w-full md:2/3 lg:w-1/3">
@@ -107,7 +107,7 @@
                         </div>
                     </edit-button>
                 </div>
-                @endauth
+                @endif
             </x-card>
             <x-card title="Experiences" class="mb-8 relative">
                 <div class="grid grid-cols-1 gap-y-8">
@@ -130,7 +130,7 @@
                 </div>
 
 
-                @auth
+                @if($edit)
                 <div class="absolute top-4 right-4">
                     <edit-button>
                         <div class="w-full md:2/3 lg:w-1/3">
@@ -138,7 +138,7 @@
                         </div>
                     </edit-button>
                 </div>
-                @endauth
+                @endif
             </x-card>
             <x-card title="Education" class="mb-8 relative">
                 <div class="grid grid-cols-1 gap-y-8">
@@ -154,7 +154,7 @@
                     @endforelse
                 </div>
 
-                @auth
+                @if($edit)
                 <div class="absolute top-4 right-4">
                     <edit-button>
                         <div class="w-full md:2/3 lg:w-1/3">
@@ -162,7 +162,7 @@
                         </div>
                     </edit-button>
                 </div>
-                @endauth
+                @endif
             </x-card>
             <x-card title="Projets" class="mb-8 relative">
                 <div class="grid grid-cols-1 gap-y-8">
@@ -183,7 +183,7 @@
                     <span class="text-gr-600">Pas de projets spécifiés</span>
                     @endforelse
                 </div>
-                @auth
+                @if($edit)
                 <div class="absolute top-4 right-4">
                     <edit-button>
                         <div class="w-full md:2/3 lg:w-1/3">
@@ -191,7 +191,7 @@
                         </div>
                     </edit-button>
                 </div>
-                @endauth
+                @endif
             </x-card>
             <x-card title="Diplomes & Certificas" class="relative">
                 <div class="grid grid-cols-2 gap-8">
@@ -205,7 +205,7 @@
                         <span class="text-gr-600">Pas de diplomes ou/et certificas spécifiés</span>
                     @endforelse
                 </div>
-                @auth
+                @if($edit)
                 <div class="absolute top-4 right-4">
                     <edit-button>
                         <div class="w-full md:2/3 lg:w-1/3">
@@ -213,7 +213,7 @@
                         </div>
                     </edit-button>
                 </div>
-                @endauth
+                @endif
             </x-card>
         </div>
         <div class="lg:col-span-1">
@@ -227,7 +227,7 @@
                     @endforelse
                 </div>
 
-                @auth
+                @if($edit)
                 <div class="absolute top-4 right-4">
                     <edit-button>
                         <div class="w-full md:2/3 lg:w-1/3">
@@ -235,7 +235,7 @@
                         </div>
                     </edit-button>
                 </div>
-                @endauth
+                @endif
             </x-card>
             <x-card title="Langues" class="mb-8 relative">
                 {{-- <p class="text-gr-600">non spécifié</p> --}}
@@ -247,7 +247,7 @@
                     @endforelse
                 </div>
 
-                @auth
+                @if($edit)
                 <div class="absolute top-4 right-4">
                     <edit-button>
                         <div class="w-full md:2/3 lg:w-1/3">
@@ -255,7 +255,7 @@
                         </div>
                     </edit-button>
                 </div>
-                @endauth
+                @endif
             </x-card>
             <x-card title="Profils similaires" class="mb-8">
                 <p class="text-gr-600">non spécifié</p>

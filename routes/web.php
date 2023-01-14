@@ -34,6 +34,9 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('companies', [ListingController::class, 'listCompanies'])->name('list-companies');
     Route::get('companies/{id}', [ListingController::class, 'showCompany'])->name('show-company');
+
+    Route::get('students', [ListingController::class, 'listStudents'])->name('list-students');
+    Route::get('students/{id}', [ListingController::class, 'showStudent'])->name('show-student');
 });
 
 Route::group(['middleware' => 'guest'], function() {

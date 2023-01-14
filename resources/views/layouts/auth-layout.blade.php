@@ -58,6 +58,7 @@
                         <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                         <li><a href="{{ route('myprofile') }}">Mon Profil</a></li>
                         <li><a href="{{ route('list-companies') }}">Entreprise</a></li>
+                        <li><a href="{{ route('list-students') }}">Étudiants</a></li>
                     </ul>
 
                 <nav class="flex items-center gap-7">
