@@ -1,4 +1,4 @@
-<x-layouts.auth-layout>
+<x-layouts.auth-layout page-title="Étudiants | FEE7" page-name="Étudiants">
     <section class="grid grid-cols-4 gap-8 container my-12">
         <div class="col-span-1">
             <div class="card">

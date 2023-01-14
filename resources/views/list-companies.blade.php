@@ -1,4 +1,4 @@
-<x-layouts.auth-layout>
+<x-layouts.auth-layout page-title="Entreprise | FEE7" page-name="Entreprise">
     <section class="grid grid-cols-4 gap-8 container my-12">
 
         <div class="col-span-1">
@@ -29,7 +29,7 @@
                     </div>
 
                     <a href="{{ route('show-company', $company->id) }}" class="bg-primary hover:bg-primary-dark-1 transition text-white px-4 py-2 rounded cursor-pointer shrink-0 grow-0" type="submit" value="Connexion">
-                        Profile
+                        Profil
                     </a>
                 </article>
             @endforeach

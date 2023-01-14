@@ -1,4 +1,4 @@
-<x-layouts.auth-layout>
+<x-layouts.auth-layout :page-title="($edit ? 'Mon profil' : $user->name) . ' | FEE7'" :page-name="$edit ? 'Mon profil' : $user->name">
 
     <section class="container">
         <div class=" mt-12 py-20 bg-gray-500 flex justify-center rounded">
