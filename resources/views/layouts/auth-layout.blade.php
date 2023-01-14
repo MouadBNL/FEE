@@ -57,6 +57,7 @@
                     <ul class="flex items-center gap-8 my-auto">
                         <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                         <li><a href="{{ route('myprofile') }}">Mon Profil</a></li>
+                        <li><a href="{{ route('list-companies') }}">Entreprise</a></li>
                     </ul>
 
                 <nav class="flex items-center gap-7">

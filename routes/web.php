@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\PageController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ListingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,9 @@ Route::group(['prefix' => 'auth'], function() {
 Route::group(['middleware' => 'auth'], function(){
     Route::get('dashboard', [PageController::class, 'dashboard'])->name('dashboard');
     Route::get('myprofile', [PageController::class, 'myprofile'])->name('myprofile');
+
+    Route::get('companies', [ListingController::class, 'listCompanies'])->name('list-companies');
+    Route::get('companies/{id}', [ListingController::class, 'showCompany'])->name('show-company');
 });
 
 Route::group(['middleware' => 'guest'], function() {

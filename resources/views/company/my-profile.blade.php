@@ -51,7 +51,7 @@
                     @endif
                 </div>
 
-                @auth
+                @if($edit)
                 <div class="absolute top-4 right-4">
                     <edit-button>
                         <div class="w-full md:2/3 lg:w-1/3">
@@ -59,7 +59,7 @@
                         </div>
                     </edit-button>
                 </div>
-                @endauth
+                @endif
             </x-card>
         </div>
         <div class="col-span-3">
@@ -70,7 +70,7 @@
                     <span class="text-gr-600">Pas de description spécifiées</span>
                 @endif
 
-                @auth
+                @if($edit)
                 <div class="absolute top-4 right-4">
                     <edit-button>
                         <div class="w-full md:2/3 lg:w-1/3">
@@ -78,7 +78,7 @@
                         </div>
                     </edit-button>
                 </div>
-                @endauth
+                @endif
             </x-card>
         </div>
     </section>

@@ -33,12 +33,14 @@ class PageController extends Controller
         switch (auth()->user()->type) {
             case 'student':
                 return view('student.my-profile', [
-                    'user' => User::student()->where('id', auth()->user()->id)->firstOrFail()
+                    'user' => User::student()->where('id', auth()->user()->id)->firstOrFail(),
+                    'edit' => true
                 ]);
                 break;
             case 'company':
                 return view('company.my-profile', [
-                    'user' => User::company()->where('id', auth()->user()->id)->firstOrFail()
+                    'user' => User::company()->where('id', auth()->user()->id)->firstOrFail(),
+                    'edit' => true
                 ]);
                 break;
 
