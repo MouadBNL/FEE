@@ -7,9 +7,11 @@
                 </div>
                 <h2 class="mt-5 text-center text-lg font-medium">{{ $user->name }}</h2>
                 <h3 class="mt-2 text-center">IT Services and IT Consulting</h3>
+                @if($user->profile->company_size && !empty($user->profile->company_size))
                 <hr class="mt-5 mb-5 bg-gr-400 text-gr-400 border-gr-400">
-                <h2 class="mt-5 text-center text-lg font-medium text-gray-50">501-1,000</h2>
+                <h2 class="mt-5 text-center text-lg font-medium text-gray-50">{{ $user->profile->company_size }}</h2>
                 <h3 class="mt-2 text-center text-gray-200">employés</h3>
+                @endif
             </div>
         </div>
     </section>
