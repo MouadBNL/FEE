@@ -18,8 +18,16 @@
                             <img class="h-32 w-32 border-2 border-primary rounded-full object-cover" src="{{ $user->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" />
                         </div>
 
-                        <h3 class="h3 text-center">{{ auth()->user()->name }}</h3>
+                        <h3 class="h3 text-center">{{ $user->name }}</h3>
                         <h4 class="h4 text-center">Genie Informatique 4eme</h4>
+
+                        @if(auth()->user()->id != $user->id)
+                        <div class="pt-8">
+                            <a href="{{ "/messenger/" . $user->id }}" class="block bg-primary hover:bg-primary-dark-1 transition text-white text-center text-sm font-bold py-2 rounded cursor-pointer">
+                                Envoyer un message
+                            </a>
+                        </div>
+                        @endif
 
                         @if($edit)
                         <div class="absolute top-4 right-4">
