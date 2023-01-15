@@ -45,9 +45,11 @@ class UserInfoController extends Controller
         $picName = Carbon::now()->format('Y-m-d-H') . uniqid() . '.' . $pic->getClientOriginalExtension();
 
         $path = $pic->storeAs('public/pictures', $picName);
+        $path = $pic->storeAs('public/users-avatar', $picName);
 
         User::where('id', auth()->user()->id)->update([
-            'picture' => '/storage/pictures/' . $picName
+            'picture' => '/storage/pictures/' . $picName,
+            'avatar' => $picName,
         ]);
     }
 

@@ -39,7 +39,7 @@
                   <div class="app-modal-body">
                       {{-- Udate profile avatar --}}
                       <div class="avatar av-l upload-avatar-preview chatify-d-flex"
-                      style="background-image: url('{{ Chatify::getUserWithAvatar(Auth::user())->avatar }}');"
+                      style="background-image: url('{{ auth()->user()->picture  ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}');"
                       ></div>
                       <p class="upload-avatar-details"></p>
                       <label class="app-btn a-btn-primary update" style="background-color:{{$messengerColor}}">
