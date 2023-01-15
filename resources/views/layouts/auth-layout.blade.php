@@ -113,6 +113,8 @@
             </div>
         </footer>
     </div>
-    @vite('resources/vue/index.ts')
+    @if(! str_contains(url()->current(), '/messenger'))
+        @vite('resources/vue/index.ts')
+    @endif
 </body>
 </html>

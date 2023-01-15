@@ -25,9 +25,7 @@
             </x-card>
         </div>
         <div class="col-span-1">
-            <x-card title="Messages">
-                <p>Display messages here !</p>
-            </x-card>
+            <x-recent-messages/>
         </div>
     </section>
 </x-layouts.auth-layout>
