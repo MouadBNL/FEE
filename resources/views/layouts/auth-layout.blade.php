@@ -73,7 +73,7 @@
                             <path d="M12.5 25C14.2246 25 15.6236 23.6011 15.6236 21.875H9.3765C9.3765 23.6011 10.7754 25 12.5 25ZM23.0171 17.6899C22.0738 16.6763 20.3086 15.1514 20.3086 10.1562C20.3086 6.3623 17.6485 3.3252 14.0616 2.58008V1.5625C14.0616 0.699707 13.3623 0 12.5 0C11.6377 0 10.9385 0.699707 10.9385 1.5625V2.58008C7.3516 3.3252 4.69144 6.3623 4.69144 10.1562C4.69144 15.1514 2.9263 16.6763 1.98294 17.6899C1.68998 18.0049 1.56009 18.3813 1.56253 18.75C1.5679 19.5508 2.19632 20.3125 3.12992 20.3125H21.8702C22.8037 20.3125 23.4327 19.5508 23.4375 18.75C23.44 18.3813 23.3101 18.0044 23.0171 17.6899Z" fill="#A3A4A4" />
                         </svg>
                     </div>
-                    <img src="{{ auth()->user()->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" class="block h-11 aspect-square rounded-full bg-gr-100 border border-primary" />
+                    <img src="{{ auth()->user()->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" class="block h-11 aspect-square rounded-full bg-gr-100 border border-primary object-cover" />
 
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
