@@ -81,13 +81,19 @@
                     </ul>
 
                     <ul class="flex space-x-2">
-                        <li>
-                            <a class="nav-item" href="#">Connexion</a>
-                        </li>
+                        @auth
+                            <li>
+                                <a class="btn-primary" href="{{ route('dashboard') }}">Dashboard</a>
+                            </li>
+                        @else
+                            <li>
+                                <a class="nav-item" href="{{ route('student.login') }}">Connexion</a>
+                            </li>
 
-                        <li>
-                            <a class="btn-primary" href="#">S'inscrire</a>
-                        </li>
+                            <li>
+                                <a class="btn-primary" href="{{ route('student.register') }}">S'inscrire</a>
+                            </li>
+                        @endauth
                     </ul>
                 </nav>
                 <button id="menuBtn" class="hamburger block xl:hidden focus:outline-none" type="button" onclick="navToggle();">

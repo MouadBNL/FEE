@@ -44,8 +44,8 @@
                 </div>
 
                 <div class="mt-8 flex space-x-4 justify-center">
-                    <a class="btn-primary" href="#">Espace Entreprise</a>
-                    <a class="btn-accent" href="#">Espace Etudiant</a>
+                    <a class="btn-primary" href="{{ route('company.login') }}">Espace Entreprise</a>
+                    <a class="btn-accent" href="{{ route('student.login') }}">Espace Etudiant</a>
                 </div>
             </div>
         </div>
