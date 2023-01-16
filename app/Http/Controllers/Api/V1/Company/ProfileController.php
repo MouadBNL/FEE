@@ -20,12 +20,18 @@ class ProfileController extends Controller
             'founding_year' => $user->profile->founding_year,
             'address' => $user->profile->address,
             'specialties' => $user->profile->specialties,
+            'website' => $user->profile->website,
+            'linkedin' => $user->profile->linkedin,
+            'email' => $user->profile->contact_email,
+            'phone' => $user->profile->contact_phone,
         ];
     }
 
     public function updateAbout()
     {
         $data = request()->validate([
+            'phone' => 'string|nullable|max:255',
+            'email' => 'string|nullable|max:255|email',
             'website' => 'string|nullable|url|max:255',
             'linkedin' => 'string|nullable|url|max:255',
             'industry' => 'string|nullable|min:1|max:255',
@@ -36,7 +42,17 @@ class ProfileController extends Controller
             'specialties.*' => 'string|required|min:1|max:255'
         ]);
 
-        User::company()->where('id', auth()->user()->id)->firstOrFail()->companyProfile()->update($data);
+        User::company()->where('id', auth()->user()->id)->firstOrFail()->companyProfile()->update([
+            'contact_phone' => $data['phone'],
+            'contact_email' => $data['email'],
+            'website' => $data['website'],
+            'linkedin' => $data['linkedin'],
+            'industry' => $data['industry'],
+            'company_size' => $data['company_size'],
+            'founding_year' => $data['founding_year'],
+            'address' => $data['address'],
+            'specialties' => $data['specialties'],
+        ]);
     }
     public function getDescription()
     {

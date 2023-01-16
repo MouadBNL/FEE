@@ -39,6 +39,22 @@
                         </div>
                         @endif
                     </div>
+
+                    <div class="py-8 px-8 border-b border-gr-100 relative">
+                        <h3 class="h3 mb-4">Contact</h3>
+                        <p class="text-gray-600 mb-2"><span class="text-gray-800 font-medium">Email: </span>{{ $user->profile->contact_email ?? ' non défini' }}</p>
+                        <p class="text-gray-600"><span class="text-gray-800 font-medium">Tel: </span>{{ $user->profile->contact_phone ?? ' non défini' }}</p>
+                        @if($edit)
+                        <div class="absolute top-4 right-4">
+                            <edit-button>
+                                <div class="w-full md:2/3 lg:w-1/3">
+                                    <edit-student-contact></edit-student-contact>
+                                </div>
+                            </edit-button>
+                        </div>
+                        @endif
+                    </div>
+
                     <div class="py-8 px-8 grid grid-cols-1 gap-y-4 border-b border-gr-100">
                         {{-- <div class="flex items-center">
                             <svg class="mr-4" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,9 +121,7 @@
         </div>
         <div class="lg:col-span-2">
             <x-card title="Sommaire" class="mb-8 relative" id="summary">
-                <p class="text-gr-600 whitespace-pre-wrap">
-                    {{ $user->profile->summary ?? 'Pas de sommaire spécifié' }}
-                </p>
+                <p class="text-gr-600 whitespace-pre-wrap">{{ $user->profile->summary ?? 'Pas de sommaire spécifié' }}</p>
 
                 @if($edit)
                 <div class="absolute top-4 right-4">

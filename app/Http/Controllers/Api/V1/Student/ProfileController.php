@@ -243,5 +243,26 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function getContact()
+    {
+        $user = User::where('id', auth()->user()->id)->with('studentProfile')->firstOrFail();
+
+        return [
+            'email' => $user->profile->contact_email,
+            'phone' => $user->profile->contact_phone,
+        ];
+    }
+
+    public function updateContact()
+    {
+        $data = request()->validate([
+            'phone' => 'nullable|string|max:255',
+            'email' => 'nullable|string|email|max:255',
+        ]);
+        User::where('id', auth()->user()->id)->firstOrFail()->studentProfile()->update([
+            'contact_email' => $data['email'],
+            'contact_phone' => $data['phone'],
+        ]);
+    }
 
 }

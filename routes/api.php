@@ -36,6 +36,9 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::post('student/profile/cv', [StudentProfileController::class, 'updateCV']);
     Route::delete('student/profile/cv', [StudentProfileController::class, 'deleteCV']);
 
+    Route::get('student/profile/contact', [StudentProfileController::class, 'getContact']);
+    Route::put('student/profile/contact', [StudentProfileController::class, 'updateContact']);
+
     Route::get('student/profile/links', [StudentProfileController::class, 'getLinks']);
     Route::put('student/profile/links', [StudentProfileController::class, 'updateLinks']);
 

@@ -59,6 +59,18 @@
         <div class="col-span-1">
             <x-card title="À propos" class="relative">
                 <div class="grid grid-cols-1 gap-y-4">
+                    @if($user->profile->contact_phone && !empty($user->profile->contact_phone))
+                    <div>
+                        <h5 class="text-sm text-gr-600">Numéro de contact</h5>
+                        <a href="{{ $user->profile->contact_phone }}" target="_blank" class="text-sm  font-semibold text-gr-800">{{ Str::limit($user->profile->contact_phone, 30) }}</a>
+                    </div>
+                    @endif
+                    @if($user->profile->contact_email && !empty($user->profile->contact_email))
+                    <div>
+                        <h5 class="text-sm text-gr-600">Email de contact</h5>
+                        <a href="{{ $user->profile->contact_email }}" target="_blank" class="text-sm  font-semibold text-gr-800">{{ Str::limit($user->profile->contact_email, 30) }}</a>
+                    </div>
+                    @endif
                     @if($user->profile->website && !empty($user->profile->website))
                     <div>
                         <h5 class="text-sm text-gr-600">Site web</h5>
