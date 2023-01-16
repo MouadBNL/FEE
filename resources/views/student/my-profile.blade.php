@@ -1,11 +1,11 @@
 <x-layouts.auth-layout :page-title="($edit ? 'Mon profil' : $user->name) . ' | FEE7'" :page-name="$edit ? 'Mon profil' : $user->name">
     <nav class="flex items-center justify-center mb-8">
-        <ul class="flex gap-8">
-            <li><a href="#" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Sommaire</a></li>
-            <li><a href="#" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Experiences</a></li>
-            <li><a href="#" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Education</a></li>
-            <li><a href="#" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Projets</a></li>
-            <li><a href="#" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Diplomes & Certificas</a></li>
+        <ul class="flex gap-8 text-sm">
+            <li><a href="#summary" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Sommaire</a></li>
+            <li><a href="#experience" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Experiences</a></li>
+            <li><a href="#education" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Education</a></li>
+            <li><a href="#projects" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Projets</a></li>
+            <li><a href="#diplomas" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Diplomes & Certificas</a></li>
         </ul>
     </nav>
 
@@ -39,7 +39,7 @@
                         </div>
                         @endif
                     </div>
-                    <div class="py-8 px-8 grid grid-cols-1 gap-y-4">
+                    <div class="py-8 px-8 grid grid-cols-1 gap-y-4 border-b border-gr-100">
                         {{-- <div class="flex items-center">
                             <svg class="mr-4" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M21.875 1.5625H3.12012C2.26074 1.5625 1.5625 2.27051 1.5625 3.13965V21.8604C1.5625 22.7295 2.26074 23.4375 3.12012 23.4375H21.875C22.7344 23.4375 23.4375 22.7295 23.4375 21.8604V3.13965C23.4375 2.27051 22.7344 1.5625 21.875 1.5625ZM8.17383 20.3125H4.93164V9.87305H8.17871V20.3125H8.17383ZM6.55273 8.44727C5.5127 8.44727 4.67285 7.60254 4.67285 6.56738C4.67285 5.53223 5.5127 4.6875 6.55273 4.6875C7.58789 4.6875 8.43262 5.53223 8.43262 6.56738C8.43262 7.60742 7.59277 8.44727 6.55273 8.44727ZM20.3271 20.3125H17.085V15.2344C17.085 14.0234 17.0605 12.4658 15.4004 12.4658C13.7109 12.4658 13.4521 13.7842 13.4521 15.1465V20.3125H10.21V9.87305H13.3203V11.2988H13.3643C13.7988 10.4785 14.8584 9.61426 16.4355 9.61426C19.7168 9.61426 20.3271 11.7773 20.3271 14.5898V20.3125Z" fill="#A3A4A4" />
@@ -79,7 +79,7 @@
                         @endif
                     </div>
 
-                    <div class="pb-8 px-8">
+                    <div class="py-8 px-8">
                         <h3 class="h3 mb-2">CV</h3>
                         <div class="flex gap-2 justify-between items-center">
                             @if($user->profile->cv)
@@ -101,30 +101,10 @@
                         </div>
                     </div>
                 </div>
-                <x-card title="Loisirs" class="mb-8 relative">
-                    {{-- <p class="text-gr-600">non spécifié</p> --}}
-                    <div class="tag-container">
-                        @forelse($user->profile->hobbies as $hobby)
-                        <span class="tag">{{ $hobby }}</span>
-                        @empty
-                        <span class="text-gr-600">Pas de Loisirs spécifié</span>
-                        @endforelse
-                    </div>
-
-                    @if($edit)
-                    <div class="absolute top-4 right-4">
-                        <edit-button>
-                            <div class="w-full md:2/3 lg:w-1/3">
-                                <edit-student-hobbies></edit-student-hobbies>
-                            </div>
-                        </edit-button>
-                    </div>
-                    @endif
-                </x-card>
             </div>
         </div>
         <div class="lg:col-span-2">
-            <x-card title="Sommaire" class="mb-8 relative">
+            <x-card title="Sommaire" class="mb-8 relative" id="summary">
                 <p class="text-gr-600 whitespace-pre-wrap">
                     {{ $user->profile->summary ?? 'Pas de sommaire spécifié' }}
                 </p>
@@ -139,7 +119,7 @@
                 </div>
                 @endif
             </x-card>
-            <x-card title="Experiences" class="mb-8 relative">
+            <x-card title="Experiences" class="mb-8 relative" id="experience">
                 <div class="grid grid-cols-1 gap-y-8">
                     @forelse($user->profile->experiences as $exp)
                     <article>
@@ -170,7 +150,7 @@
                 </div>
                 @endif
             </x-card>
-            <x-card title="Education" class="mb-8 relative">
+            <x-card title="Education" class="mb-8 relative" id="education">
                 <div class="grid grid-cols-1 gap-y-8">
                     @forelse($user->profile->education as $edu)
                     <article>
@@ -194,7 +174,7 @@
                 </div>
                 @endif
             </x-card>
-            <x-card title="Projets" class="mb-8 relative">
+            <x-card title="Projets" class="mb-8 relative" id="projects">
                 <div class="grid grid-cols-1 gap-y-8">
                     @forelse($user->profile->projects as $project)
                     <article>
@@ -223,7 +203,7 @@
                 </div>
                 @endif
             </x-card>
-            <x-card title="Diplomes & Certificas" class="relative">
+            <x-card title="Diplomes & Certificas" class="relative" id="diplomas">
                 <div class="grid grid-cols-2 gap-8">
                     @forelse($user->profile->certifications as $certif)
                     <article>
@@ -232,7 +212,7 @@
                         <h4 class="text-sm font-normal text-gr-600 mb-4">{{ $certif->reception }}</h4>
                     </article>
                     @empty
-                    <span class="text-gr-600">Pas de diplomes ou/et certificas spécifiés</span>
+                    <span class="text-gr-600">Pas de diplomes/certificas spécifiés</span>
                     @endforelse
                 </div>
                 @if($edit)
@@ -287,9 +267,29 @@
                 </div>
                 @endif
             </x-card>
-            <x-card title="Profils similaires" class="mb-8">
-                <p class="text-gr-600">non spécifié</p>
+            <x-card title="Loisirs" class="mb-8 relative">
+                {{-- <p class="text-gr-600">non spécifié</p> --}}
+                <div class="tag-container">
+                    @forelse($user->profile->hobbies as $hobby)
+                    <span class="tag">{{ $hobby }}</span>
+                    @empty
+                    <span class="text-gr-600">Pas de Loisirs spécifié</span>
+                    @endforelse
+                </div>
+
+                @if($edit)
+                <div class="absolute top-4 right-4">
+                    <edit-button>
+                        <div class="w-full md:2/3 lg:w-1/3">
+                            <edit-student-hobbies></edit-student-hobbies>
+                        </div>
+                    </edit-button>
+                </div>
+                @endif
             </x-card>
+            {{-- <x-card title="Profils similaires" class="mb-8">
+                <p class="text-gr-600">non spécifié</p>
+            </x-card> --}}
         </div>
     </section>
 </x-layouts.auth-layout>
