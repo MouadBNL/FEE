@@ -18,7 +18,7 @@ class ListingController extends Controller
                 $user = User::company()->where('id', auth()->user()->id)->firstOrFail();
                 break;
         }
-        $companies = User::company()->with('companyProfile')->paginate(5);
+        $companies = User::company()->with('companyProfile')->paginate(10);
         return view('list-companies', [
             'companies' => $companies,
             'user' => $user
@@ -46,7 +46,7 @@ class ListingController extends Controller
                 $user = User::company()->where('id', auth()->user()->id)->firstOrFail();
                 break;
         }
-        $students = User::student()->with('studentProfile')->paginate(2);
+        $students = User::student()->with('studentProfile')->paginate(10);
 
         return view('list-students',[
             'students' => $students,
