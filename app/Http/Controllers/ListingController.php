@@ -9,9 +9,19 @@ class ListingController extends Controller
 {
     public function listCompanies()
     {
+        $user = null;
+        switch (auth()->user()->type) {
+            case 'student':
+                $user = User::student()->where('id', auth()->user()->id)->firstOrFail();
+                break;
+            case 'company':
+                $user = User::company()->where('id', auth()->user()->id)->firstOrFail();
+                break;
+        }
         $companies = User::company()->with('companyProfile')->paginate(5);
         return view('list-companies', [
-            'companies' => $companies
+            'companies' => $companies,
+            'user' => $user
         ]);
     }
 
@@ -27,10 +37,20 @@ class ListingController extends Controller
 
     public function listStudents()
     {
+        $user = null;
+        switch (auth()->user()->type) {
+            case 'student':
+                $user = User::student()->where('id', auth()->user()->id)->firstOrFail();
+                break;
+            case 'company':
+                $user = User::company()->where('id', auth()->user()->id)->firstOrFail();
+                break;
+        }
         $students = User::student()->with('studentProfile')->paginate(2);
 
         return view('list-students',[
             'students' => $students,
+            'user' => $user
         ]);
     }
 

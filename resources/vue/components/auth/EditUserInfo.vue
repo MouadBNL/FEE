@@ -13,6 +13,16 @@
             </n-upload>
         </div>
 
+        <!-- Banner -->
+        <div v-if="authInfo.type == 'company'">
+            <h3 class="font-bold text-gr-800 mb-2 mt-4">Image de bannière</h3>
+            <n-upload ref="banner" action="/api/company/profile/banner" :custom-request="editCompanyBanner" :multiple="false"
+                :show-file-list="false" accept=".jpeg,.png,.jpg">
+                <n-button :loading="bannerIsLoading">Sélectionnez une image de bannière</n-button>
+            </n-upload>
+        </div>
+        
+
         <hr class="my-8">
         <h3 class="font-bold text-gr-800 mb-4">Informations d'authentification</h3>
         <n-form ref="formauthinfo" :model="authInfo" :rules="authInfoRules">
@@ -57,17 +67,11 @@ import axios from '../../services/axios';
 import formvalidator from '../../services/formvalidator'
 
 const picture = ref()
+const banner = ref()
 const loading = ref(false)
 const formRef = ref()
 const formauthinfo = ref()
 const formpassword = ref()
-
-onMounted(async () => {
-    const req = await axios.get('api/user')
-    authInfo.name = req.data.name
-    authInfo.email = req.data.email
-    currentPicture.value = req.data.picture ?? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-})
 
 /**
  * Edit profile picture
@@ -91,13 +95,32 @@ const editProfilePicture = async ({ file }) => {
     }
 }
 
+const bannerIsLoading = ref(false)
+const editCompanyBanner = async ({ file }) => {
+    bannerIsLoading.value = true
+    const formData = new FormData()
+    formData.append('banner', file.file as File)
+    try {
+        await axios.post('/api/company/profile/banner', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        })
+        window.location.reload()
+    } catch (err) {
+        bannerIsLoading.value = false
+
+    }
+}
+
 /**
  * Edit Auth Info
  */
 const editAuthIsLoading = ref(false)
 const authInfo = reactive({
     name: "",
-    email: ""
+    email: "",
+    type: ""
 })
 const authInfoRules = {
     name: {
@@ -164,6 +187,14 @@ const editPassword = async (e) => {
     }
 }
 
+
+onMounted(async () => {
+    const req = await axios.get('api/user')
+    authInfo.name = req.data.name
+    authInfo.email = req.data.email
+    authInfo.type = req.data.type
+    currentPicture.value = req.data.picture ?? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+})
 
 // const submit = async () => {
 //     try {

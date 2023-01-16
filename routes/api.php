@@ -72,4 +72,6 @@ Route::middleware(['auth:sanctum'])->group(function() {
 
     Route::get('company/profile/description', [CompanyProfileController::class, 'getDescription']);
     Route::put('company/profile/description', [CompanyProfileController::class, 'updateDescription']);
+
+    Route::post('company/profile/banner', [CompanyProfileController::class, 'updateBanner']);
 });

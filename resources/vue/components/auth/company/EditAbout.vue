@@ -2,6 +2,12 @@
     <n-card title="Modifier vos information" :bordered="false" size="huge" role="dialog" aria-modal="true">
 
         <n-form ref="formRef" inline :label-width="80" :model="aboutInfo">
+            <n-form-item label="Site web" path="website">
+                <n-input v-model:value="aboutInfo.website" placeholder="https://www.example.com"/>
+            </n-form-item>
+            <n-form-item label="Linkedin" path="linkedin">
+                <n-input v-model:value="aboutInfo.linkedin" placeholder="https://www.linkedin.com/company/name"/>
+            </n-form-item>
             <n-form-item label="Industrie" path="industry">
                 <n-input v-model:value="aboutInfo.industry" placeholder="IT"/>
             </n-form-item>
@@ -35,6 +41,8 @@ import axios from '../../../services/axios';
 const formRef = ref()
 const loading = ref(false)
 const aboutInfo = ref({
+    website: '',
+    linkedin: '',
     industry: '',
     company_size: '',
     founding_year: '',
