@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="col-span-2">
-            @foreach($students as $student)
+            @forelse($students as $student)
                 <article class="bg-white border border-gr-100 rounded-md shadow-sm p-4 mb-8 flex items-start  gap-4">
                     <img class="block h-16 w-16 object-cover rounded-full shrink-0 grow-0" src="{{ $student->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" alt="">
 
@@ -25,7 +25,7 @@
                         <h4 class="font-bold">{{ $student->name }}</h4>
                         <div class="mb-4">
                             <p class="text-sm text-gray-600">{{ $student->profile->field }}</p>
-                            <p class="text-sm text-gray-600">Skills: {{ join(", ", $student->profile->skills) }}</p>
+                            <p class="text-sm text-gray-600"><span class="font-medium text-gray-800">Compétences: </span>{{ empty($student->profile->skills) ? 'non défini' : join(", ", $student->profile->skills) }}</p>
                         </div>
                         <p class="text-sm text-gray-600">
                             {{ Str::limit($student->profile->summary, 200) }}
@@ -36,7 +36,9 @@
                         Profil
                     </a>
                 </article>
-            @endforeach
+            @empty
+                <p>Aucun étudiant à afficher</p>
+            @endforelse
             <div>
                 {{ $students->links() }}
             </div>

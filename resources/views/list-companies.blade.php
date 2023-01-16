@@ -18,21 +18,27 @@
             </div>
         </div>
         <div class="col-span-2">
-            @foreach($companies as $company)
+            @forelse($companies as $company)
                 <article class="bg-white border border-gr-100 rounded-md shadow-sm p-4 mb-8 flex items-start  gap-4">
                     <img class="block h-16 w-16 object-cover rounded-full shrink-0 grow-0" src="{{ $company->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" alt="">
 
                     <div class="w-full">
                         <h4 class="font-bold">{{ $company->name }}</h4>
-                        <p class="text-sm text-gray-600">{{ $company->profile->industry }} - Spécialités: {{ join(", ", $company->profile->specialties ?? ["non défini"]) }}</p>
-                        <p class="text-sm text-gray-600">{{ $company->profile->founding_year }} - {{ $company->profile->company_size }}</p>
+                        <p class="text-sm text-gray-600">
+                            <span class="font-medium text-gray-800">Industrie: </span>{{ $company->profile->industry ?? 'non défini' }} - <span class="font-medium text-gray-800">Spécialités: </span>{{ empty($company->profile->specialties) ? 'non défini' : join(", ", $company->profile->specialties ?? ["non défini"]) }}
+                        </p>
+                        <p class="text-sm text-gray-600">
+                            <span class="font-medium text-gray-800">Fondée: </span>{{ $company->profile->founding_year ?? 'non défini' }} - <span class="font-medium text-gray-800">Taille de l'entreprise: </span>{{ $company->profile->company_size ?? 'non défini' }}
+                        </p>
                     </div>
 
                     <a href="{{ route('show-company', $company->id) }}" class="bg-primary hover:bg-primary-dark-1 transition text-white px-4 py-2 rounded cursor-pointer shrink-0 grow-0" type="submit" value="Connexion">
                         Profil
                     </a>
                 </article>
-            @endforeach
+            @empty
+                <p>Aucune entreprise à afficher</p>
+            @endforelse
             <div>
                 {{ $companies->links() }}
             </div>

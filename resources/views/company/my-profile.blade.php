@@ -31,6 +31,7 @@
                 </div>
                 @endif
             </div>
+            @if(($user->profile->linkedin && !empty($user->profile->linkedin)) || ($user->profile->website && !empty($user->profile->website)))
             <div class="flex items-center justify-between px-8 py-4">
                 @if($user->profile->linkedin && !empty($user->profile->linkedin))
                 <div class="flex items-center gap-2">
@@ -49,6 +50,7 @@
                 </div>
                 @endif
             </div>
+            @endif
         </div>
     </section>
 
