@@ -18,6 +18,7 @@ import EditStudentProjects from "./components/auth/student/EditProjects.vue"
 import EditStudentCertifications from "./components/auth/student/EditCertifications.vue"
 import EditStudentCv from "./components/auth/student/EditCv.vue"
 import EditStudentContact from "./components/auth/student/EditContact.vue"
+import EditStudentField from "./components/auth/student/EditField.vue"
 
 import EditCompanyAbout from "./components/auth/company/EditAbout.vue"
 import EditCompanyDescription from "./components/auth/company/EditDescription.vue"
@@ -40,6 +41,7 @@ app.component('edit-student-projects', EditStudentProjects)
 app.component('edit-student-certifications', EditStudentCertifications)
 app.component('edit-student-cv', EditStudentCv)
 app.component('edit-student-contact', EditStudentContact)
+app.component('edit-student-field', EditStudentField)
 
 /**
  * Company Profile components

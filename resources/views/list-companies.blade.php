@@ -9,7 +9,7 @@
                     </div>
     
                     <h3 class="h3 text-center">{{ auth()->user()->name }}</h3>
-                    <h4 class="h4 text-center">Genie Informatique 4eme</h4>
+                    <h4 class="h4 text-center">{{{ $user->profile->field ?? $user->profile->industry ?? 'non défini' }}}</h4>
     
                 </div>
                 <div class="py-8 px-8 flex justify-center">

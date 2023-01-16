@@ -19,7 +19,18 @@
                         </div>
 
                         <h3 class="h3 text-center">{{ $user->name }}</h3>
-                        <h4 class="h4 text-center">Genie Informatique 4eme</h4>
+                        <h4 class="h4 text-center relative">
+                            {{ $user->profile->field ?? 'undefined' }}
+                            @if($edit)
+                        <div class="absolute top-0 -right-4">
+                            <edit-button>
+                                <div class="w-full md:2/3 lg:w-1/3">
+                                    <edit-student-field></edit-student-field>
+                                </div>
+                            </edit-button>
+                        </div>
+                        @endif
+                        </h4>
 
                         @if(auth()->user()->id != $user->id)
                         <div class="pt-8">

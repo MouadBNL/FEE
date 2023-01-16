@@ -7,6 +7,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -262,6 +263,17 @@ class ProfileController extends Controller
         User::where('id', auth()->user()->id)->firstOrFail()->studentProfile()->update([
             'contact_email' => $data['email'],
             'contact_phone' => $data['phone'],
+        ]);
+    }
+
+    public function updateField()
+    {
+        $data = request()->validate([
+            'type' => ['string','required', Rule::in(['Années Préparatoires', 'Génie Electrique', 'Génie Informatique', 'Génie Réseaux et Systèmes de Télécommunications', 'Génie Industriel', 'Génie Mécatronique'])],
+            'year' => ['string','required', Rule::in(['1ère année', '2ème année', '3ème année', '4ème année', '5ème année'])]
+        ]);
+        User::where('id', auth()->user()->id)->firstOrFail()->studentProfile()->update([
+            'field' => $data['year'] . ' ' . $data['type'],
         ]);
     }
 

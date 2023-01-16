@@ -1,5 +1,5 @@
 <template>
-    <n-card title="Modifier vos informations utilisateur" :bordered="false" size="huge" role="dialog" aria-modal="true">
+    <n-card title="Modifier vos informations de contact" :bordered="false" size="huge" role="dialog" aria-modal="true">
         <n-form ref="formcontact" :model="contacts" :rules="contactRules">
             <n-form-item path="phone" label="Numéro de contact">
                 <n-input v-model:value="contacts.phone" @keydown.enter.prevent placeholder="0611223355" />
