@@ -78,6 +78,28 @@
                         </edit-button>
                         @endif
                     </div>
+
+                    <div class="pb-8 px-8">
+                        <h3 class="h3 mb-2">CV</h3>
+                        <div class="flex gap-2 justify-between items-center">
+                            @if($user->profile->cv)
+                            <a class="block w-full" href="{{ $user->profile->cv }}" target="_blank">
+                                <button class="w-full bg-primary hover:bg-primary-dark-1 transition text-white px-4 py-2 rounded cursor-pointer" type="submit" value="Connexion">
+                                    Voir le cv
+                                </button>
+                            </a>
+                            @else
+                            <p>Pas de CV spécifié</p>
+                            @endif
+                            @if($edit)
+                            <edit-button>
+                                <div class="w-full md:2/3 lg:w-1/3">
+                                    <edit-student-cv></edit-student-cv>
+                                </div>
+                            </edit-button>
+                            @endif
+                        </div>
+                    </div>
                 </div>
                 <x-card title="Loisirs" class="mb-8 relative">
                     {{-- <p class="text-gr-600">non spécifié</p> --}}
@@ -210,7 +232,7 @@
                         <h4 class="text-sm font-normal text-gr-600 mb-4">{{ $certif->reception }}</h4>
                     </article>
                     @empty
-                        <span class="text-gr-600">Pas de diplomes ou/et certificas spécifiés</span>
+                    <span class="text-gr-600">Pas de diplomes ou/et certificas spécifiés</span>
                     @endforelse
                 </div>
                 @if($edit)

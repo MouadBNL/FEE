@@ -35,7 +35,6 @@ class UserInfoController extends Controller
     }
 
     public function updatePicture() {
-        Log::info("Request" . json_encode(request()));
         request()->validate([
             'picture' => 'required|image|max:8192', // 8MB
         ]);

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api\V1\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -215,6 +217,30 @@ class ProfileController extends Controller
         foreach ($data['certifications'] as $exp) {
             $user->profile->certifications()->create($exp);
         }
+    }
+
+    public function updateCV()
+    {
+        request()->validate([
+            'cv' => 'required|mimes:pdf|max:8192', // 8MB
+        ]);
+
+        $pic = request()->file('cv');
+
+        $picName = Str::slug(auth()->user()->name) . '-' . Carbon::now()->format('Y-m-d-H') . uniqid() . '.' . $pic->getClientOriginalExtension();
+
+        $path = $pic->storeAs('public/cv', $picName);
+
+        User::where('id', auth()->user()->id)->firstOrFail()->studentProfile()->update([
+            'cv' => '/storage/cv/' . $picName,
+        ]);
+    }
+
+    public function deleteCV()
+    {
+        User::where('id', auth()->user()->id)->firstOrFail()->studentProfile()->update([
+            'cv' => null
+        ]);
     }
 
 

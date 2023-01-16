@@ -32,7 +32,7 @@
             <n-form-item path="email" label="Email">
                 <n-input v-model:value="authInfo.email" @keydown.enter.prevent />
             </n-form-item>
-            <n-button :loading="editAuthIsLoading" @click="editAuthInfo">
+            <n-button :loading="editAuthIsLoading" @click="editAuthInfo" type="primary">
                 Enregistrer
             </n-button>
         </n-form>
@@ -46,7 +46,7 @@
             <n-form-item path="password_confirmation" label="Confirmer votre mot de passe">
                 <n-input type="password" v-model:value="passwords.password_confirmation" @keydown.enter.prevent />
             </n-form-item>
-            <n-button :loading="editPasswordIsLoading" @click="editPassword">
+            <n-button :loading="editPasswordIsLoading" @click="editPassword" type="primary">
                 Enregistrer
             </n-button>
         </n-form>
