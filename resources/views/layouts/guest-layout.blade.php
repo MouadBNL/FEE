@@ -124,6 +124,9 @@
                             <a href="https://ensa.uit.ac.ma/" target="_blank">https://ensa.uit.ac.ma/</a>
                             <a href="https://www.uit.ac.ma/" target="_blank">https://www.uit.ac.ma/</a>
                         </p>
+                        <p class="mt-4 opacity-75 text-sm font-bold">
+                            Made by Benali Mouad, mouadbnl.2k01@gmail.com
+                        </p>
                     </div>
                 </div>
             </div>

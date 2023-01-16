@@ -54,12 +54,12 @@
                     <h2 class="h2">{{ $page_name }}</h2>
                 </nav>
 
-                    <ul class="flex items-center gap-8 my-auto text-base">
-                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li><a href="{{ route('myprofile') }}">Mon Profil</a></li>
-                        <li><a href="{{ route('list-companies') }}">Entreprise</a></li>
-                        <li><a href="{{ route('list-students') }}">Étudiants</a></li>
-                    </ul>
+                <ul class="flex items-center gap-8 my-auto text-base">
+                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ route('myprofile') }}">Mon Profil</a></li>
+                    <li><a href="{{ route('list-companies') }}">Entreprise</a></li>
+                    <li><a href="{{ route('list-students') }}">Étudiants</a></li>
+                </ul>
 
                 <nav class="flex items-center gap-7">
                     <a href="/messenger">
@@ -104,13 +104,16 @@
                             <a href="https://ensa.uit.ac.ma/" target="_blank">https://ensa.uit.ac.ma/</a>
                             <a href="https://www.uit.ac.ma/" target="_blank">https://www.uit.ac.ma/</a>
                         </p>
+                        <p class="mt-4 opacity-75 text-sm font-bold">
+                            Made by Benali Mouad, mouadbnl.2k01@gmail.com
+                        </p>
                     </div>
                 </div>
             </div>
         </footer>
     </div>
     @if(! str_contains(url()->current(), '/messenger'))
-        @vite('resources/vue/index.ts')
+    @vite('resources/vue/index.ts')
     @endif
 </body>
 </html>
