@@ -43,7 +43,7 @@ html{
 }
 
 .nav-item {
-	@apply px-4 py-2 transition rounded bg-transparent text-gray-900 hover:bg-primary hover:text-white;
+	@apply block px-2 py-2 transition rounded bg-transparent text-gray-900 hover:bg-primary hover:text-white;
 }
 
 #grad-anim {

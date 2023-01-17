@@ -32,7 +32,7 @@
                 @endif
             </div>
             @if(($user->profile->linkedin && !empty($user->profile->linkedin)) || ($user->profile->website && !empty($user->profile->website)))
-            <div class="flex items-center justify-between px-8 py-4">
+            <div class="flex items-center justify-between px-8 py-4 flex-wrap gap-4">
                 @if($user->profile->linkedin && !empty($user->profile->linkedin))
                 <div class="flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
@@ -54,7 +54,7 @@
         </div>
     </section>
 
-    <section class="grid grid-cols-4 gap-8 container my-12">
+    <section class="grid grid-cols-1 lg:grid-cols-4 gap-8 container my-12">
 
         <div class="col-span-1">
             <x-card title="À propos" class="relative">
@@ -127,7 +127,7 @@
                 @endif
             </x-card>
         </div>
-        <div class="col-span-3">
+        <div class="col-span-1 lg:col-span-3">
             <x-card title="Description" class="relative">
                 @if($user->profile->description)
                 <div class="whitespace-pre-line text-gr-600"> {{ $user->profile->description }}</div>

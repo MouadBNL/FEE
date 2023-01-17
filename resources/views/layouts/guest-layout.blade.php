@@ -61,8 +61,8 @@
                     </a>
                 </div>
 
-                <nav class="absolute bg-white p-8 top-20 left-0 right-0 hidden xl:flex xl:relative xl:top-0 xl:space-x-4 xl:bg-transparent" id="menu">
-                    <ul class="block md:flex md:space-x-2 mb-8 xl:mb-0">
+                <nav class="absolute bg-white p-8 top-20 left-0 right-0 hidden lg:flex lg:relative lg:top-0 lg:space-x-4 lg:bg-transparent" id="menu">
+                    <ul class="block md:flex md:space-x-2 mb-8 lg:mb-0">
                         <li>
                             <a class="nav-item" href="apropos">À propos</a>
                         </li>
@@ -83,20 +83,20 @@
                     <ul class="flex space-x-2">
                         @auth
                             <li>
-                                <a class="btn-primary" href="{{ route('dashboard') }}">Dashboard</a>
+                                <a class="block btn-primary" href="{{ route('dashboard') }}">Dashboard</a>
                             </li>
                         @else
                             <li>
-                                <a class="nav-item" href="{{ route('student.login') }}">Connexion</a>
+                                <a class="block nav-item" href="{{ route('student.login') }}">Connexion</a>
                             </li>
 
                             <li>
-                                <a class="btn-primary" href="{{ route('student.register') }}">S'inscrire</a>
+                                <a class="block btn-primary" href="{{ route('student.register') }}">S'inscrire</a>
                             </li>
                         @endauth
                     </ul>
                 </nav>
-                <button id="menuBtn" class="hamburger block xl:hidden focus:outline-none" type="button" onclick="navToggle();">
+                <button id="menuBtn" class="hamburger block lg:hidden focus:outline-none" type="button" onclick="navToggle();">
                     <span class="hamburger__top-bun"></span>
                     <span class="hamburger__middle-bun"></span>
                     <span class="hamburger__bottom-bun"></span>
@@ -132,6 +132,15 @@
             </div>
         </footer>
     </div>
-    @vite('resources/vue/index.ts')
+    {{-- @vite('resources/vue/index.ts') --}}
+    <script>
+        function navToggle() {
+            var btn = document.getElementById("menuBtn");
+            var nav = document.getElementById("menu");
+            btn.classList.toggle("open");
+            nav.classList.toggle("block");
+            nav.classList.toggle("hidden");
+        }
+    </script>
 </body>
 </html>

@@ -1256,7 +1256,7 @@ $(document).ready(function () {
   $(".messenger-infoView nav a , .show-infoSide").on("click", function () {
     $(".messenger-infoView").toggle();
   });
-
+  $(".messenger-infoView").toggle();
   // make favorites card dragable on click to slide.
   hScroller(".messenger-favorites");
 

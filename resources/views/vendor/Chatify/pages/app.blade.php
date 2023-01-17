@@ -2,9 +2,9 @@
 
 <x-layouts.auth-layout>
 
-    <section class="container my-12">
+    <section class="lg:container lg:my-12">
     
-        <div class="messenger rounded">
+        <div class="messenger rounded relative">
             {{-- ----------------------Users/Groups lists side---------------------- --}}
             <div class="messenger-listView">
                 {{-- Header and search bar --}}

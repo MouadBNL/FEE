@@ -26,10 +26,10 @@
 <body class="antialiased font-sans">
     <div class="flex min-h-screen flex-col bg-gray-50">
         <header class="p-4 border-b-2 border-gr-100 bg-white">
-            <div class="container mx-auto flex justify-between">
+            <div class="lg:container mx-auto flex justify-between">
                 <nav class="flex items-center">
-                    <div class="pr-8 mr-8 border-r-2 border-gr-100">
-                        <a href="#">
+                    <div class="pr-4 mr-4 border-r-2 border-gr-100">
+                        <a href="/">
                             <svg width="42" height="45" viewBox="0 0 42 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M36.1462 34.2122L36.1321 29.0313L28.2783 32.3236C27.3363 32.6795 25.8785 32.3513 25.5342 31.5079C25.2075 30.7079 25.1422 27.6861 28.1807 26.3406C30.1268 25.4788 36.0701 23.0131 36.0701 23.0131L36.1323 17.926C36.1323 17.926 27.0861 22.0211 25.2081 22.8087C24.3569 23.1657 23.2671 23.043 22.6217 22.4267C21.9761 21.8112 22.099 21.4477 22.099 20.5068C22.099 19.5997 23.2316 17.222 25.2081 16.2432C25.2081 16.2432 36.2164 11.6146 39.4675 10.5245C40.676 10.1192 41.3442 10.3619 41.6889 10.7909C41.963 11.1323 41.9974 12.1797 42 13.6549L41.953 34.4675C41.953 35.4085 42.0847 36.8667 41.4057 37.4987C40.7275 38.1308 40.3057 38.3284 39.4021 38.7229C39.4021 38.7229 28.3031 43.4902 25.2896 44.8021C24.4436 45.1705 22.5309 45.0609 22.2463 44.1621C21.3965 41.4826 24.1143 39.205 25.1264 38.7869C27.8832 37.6487 36.1462 34.2122 36.1462 34.2122Z" fill="url(#paint0_linear_305_104)" />
                                 <path d="M1.88336 6.15546C6.56464 4.49264 15.4084 1.47175 18.8666 0.311021C19.2067 0.196744 20.2084 -0.0490417 21.0078 0.00864088C22.119 0.0886346 23.0823 0.323356 23.6896 0.543565C27.5352 1.93538 35.7978 4.81752 39.6875 6.34846C40.3007 6.59008 42.7242 8.21517 40.0124 8.91842C38.6487 9.27214 35.2076 8.16293 35.2076 8.16293L22.4724 3.79102L17.2766 5.63813C17.2766 5.63813 24.7202 8.29788 26.8335 9.00295C27.909 9.36174 28.4301 10.5754 27.4874 11.1232C26.2702 11.8303 23.0599 11.1475 21.2678 10.509C19.3795 9.83608 12.0955 7.46439 12.0955 7.46439C12.0955 7.46439 9.71019 8.21299 7.79404 8.76351C6.42592 9.15641 3.90915 8.78292 3.20463 8.58085C1.26107 8.02289 0.697486 6.57684 1.88336 6.15546Z" fill="url(#paint1_linear_305_104)" />
@@ -51,17 +51,18 @@
                             </svg>
                         </a>
                     </div>
-                    <h2 class="h2">{{ $page_name }}</h2>
+                    <h2 class="hidden lg:block h2">{{ $page_name }}</h2>
                 </nav>
 
-                <ul class="flex items-center gap-8 my-auto text-base">
-                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ route('myprofile') }}">Mon Profil</a></li>
-                    <li><a href="{{ route('list-companies') }}">Entreprise</a></li>
-                    <li><a href="{{ route('list-students') }}">Étudiants</a></li>
+                {{-- Desktop menu --}}
+                <ul class="hidden md:flex items-center gap-2 my-auto text-sm lg:text-base">
+                    <li><a class="px-2 py-2 rounded hover:bg-primary hover:text-white" href="{{ route('dashboard') }}">Dashboard</a></li>
+                    <li><a class="px-2 py-2 rounded hover:bg-primary hover:text-white" href="{{ route('myprofile') }}">Mon Profil</a></li>
+                    <li><a class="px-2 py-2 rounded hover:bg-primary hover:text-white" href="{{ route('list-companies') }}">Entreprise</a></li>
+                    <li><a class="px-2 py-2 rounded hover:bg-primary hover:text-white" href="{{ route('list-students') }}">Étudiants</a></li>
                 </ul>
 
-                <nav class="flex items-center gap-7">
+                <nav class="flex items-center gap-4 lg:gap-7">
                     <a href="/messenger">
                         <div class="h-11 aspect-square rounded-full bg-gray-50 hover:bg-gray-200 flex items-center justify-center">
                             <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,17 +70,37 @@
                             </svg>
                         </div>
                     </a>
-                    <a href="{{ route('myprofile') }}">
+                    <a class="hidden lg:block" href="{{ route('myprofile') }}">
                         <img src="{{ auth()->user()->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" class="block h-11 aspect-square rounded-full bg-gr-100 border border-primary object-cover" />
                     </a>
 
-                    <form action="{{ route('logout') }}" method="POST">
+                    <form class="mb-0" action="{{ route('logout') }}" method="POST">
                         @csrf
                         @method('delete')
                         <x-button>
-                            Logout
+                            Se déconnecter
                         </x-button>
                     </form>
+
+                    {{-- Mobile menu --}}
+                    <div class="block md:hidden">
+                        <div class="p-2 hover:bg-gray-100 rounded-full hover:cursor-pointer" id="mobile-menu-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                              </svg>                              
+                        </div>
+                        <div>
+                            <div class="hidden" id="mobile-menu-content">
+                                <ul class="absolute top-20 right-2 grid grid-cols-1 gap-4 bg-white p-4 shadow-md rounded-lg border-gray-100 border">
+                                    <li><a class="block px-8 py-2 rounded hover:bg-primary hover:text-white" href="{{ route('dashboard') }}">Dashboard</a></li>
+                                    <li><a class="block px-8 py-2 rounded hover:bg-primary hover:text-white" href="{{ route('myprofile') }}">Mon Profil</a></li>
+                                    <li><a class="block px-8 py-2 rounded hover:bg-primary hover:text-white" href="{{ route('list-companies') }}">Entreprise</a></li>
+                                    <li><a class="block px-8 py-2 rounded hover:bg-primary hover:text-white" href="{{ route('list-students') }}">Étudiants</a></li>
+                                    <li><a class="block px-8 py-2 rounded hover:bg-primary hover:text-white" href="/messenger">Messages</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </nav>
             </div>
         </header>
@@ -119,5 +140,23 @@
     @if(! str_contains(url()->current(), '/messenger'))
     @vite('resources/vue/index.ts')
     @endif
+
+
+    <script>
+        // Menu script
+        const menu = document.getElementById('mobile-menu-btn')
+        const menuContent = document.getElementById('mobile-menu-content')
+        menu.addEventListener('click', () => {
+            menuContent.classList.toggle('hidden')
+        })
+        window.addEventListener('mouseup', function(event){
+            if (
+                event.target != menuContent && event.target.parentNode != menuContent
+                && event.target != menu && event.target.parentNode != menu
+            ){
+                menuContent.classList.add('hidden')
+            }
+        });
+    </script>
 </body>
 </html>

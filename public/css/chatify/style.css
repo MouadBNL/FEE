@@ -641,7 +641,7 @@ body {
 */
 .app-modal {
   display: none;
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
@@ -734,7 +734,7 @@ div.loadingPlaceholder-date {
 */
 .imageModal {
   display: none;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   padding-top: 100px;
   left: 0;
@@ -842,7 +842,7 @@ div.loadingPlaceholder-date {
 */
 @media (max-width: 1060px) {
   .messenger-infoView {
-    position: fixed;
+    position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
@@ -851,7 +851,7 @@ div.loadingPlaceholder-date {
 }
 @media (max-width: 980px) {
   .messenger-listView {
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
@@ -866,7 +866,7 @@ div.loadingPlaceholder-date {
 }
 @media (max-width: 680px) {
   .messenger-messagingView {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     height: 100%;
@@ -888,7 +888,7 @@ div.loadingPlaceholder-date {
   }
   .app-modal-card {
     max-width: unset;
-    position: fixed;
+    position: absolute;
     left: 0;
     right: 0;
     top: 0;

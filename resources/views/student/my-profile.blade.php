@@ -1,5 +1,5 @@
 <x-layouts.auth-layout :page-title="($edit ? 'Mon profil' : $user->name) . ' | FEE7'" :page-name="$edit ? 'Mon profil' : $user->name">
-    <nav class="flex items-center justify-center mb-8">
+    <nav class="hidden md:flex items-center justify-center">
         <ul class="flex gap-8 text-sm">
             <li><a href="#summary" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Sommaire</a></li>
             <li><a href="#experience" class="block text-gr-800 px-6 py-4 border-b-2 border-transparent hover:border-primary hover:bg-gr-100 transition">Experiences</a></li>
@@ -9,7 +9,7 @@
         </ul>
     </nav>
 
-    <section class="grid md:grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8 container mb-12">
+    <section class="grid md:grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8 container mb-12 mt-8">
         <div class="lg:col-span-1">
             <div class="">
                 <div class="card mb-8">

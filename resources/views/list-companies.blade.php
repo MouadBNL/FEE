@@ -1,11 +1,11 @@
 <x-layouts.auth-layout page-title="Entreprise | FEE7" page-name="Entreprise">
-    <section class="grid grid-cols-4 gap-8 container my-12">
+    <section class="grid grid-cols-1 lg:grid-cols-4 gap-8 container my-12">
 
-        <div class="col-span-1">
+        <div class="hidden lg:block lg:col-span-1">
             <div class="card">
                 <div class="pt-14 pb-8 px-8 border-b border-gr-100">
                     <div class="relative overflow-hidden mx-auto h-32 w-32 rounded-full bg-gr-100 border border-primary aspect-square mb-8">
-                        <img class="absolute inset-0 object-cover" src="{{ $user->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" />
+                        <img class="absolute inset-0 object-cover h-32 w-32" src="{{ $user->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" />
                     </div>
     
                     <h3 class="h3 text-center">{{ auth()->user()->name }}</h3>
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-span-2">
+        <div class="col-span-1 lg:col-span-2">
             @forelse($companies as $company)
                 <article class="bg-white border border-gr-100 rounded-md shadow-sm p-4 mb-8 flex items-start  gap-4">
                     <img class="block h-16 w-16 object-cover rounded-full shrink-0 grow-0" src="{{ $company->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" alt="">

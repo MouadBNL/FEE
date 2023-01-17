@@ -1,5 +1,5 @@
 <x-layouts.auth-layout page-title="Dashboard | FEE7" page-name="Dashboard">
-    <section class="grid grid-cols-4 gap-8 container my-12">
+    <section class="grid grid-cols-1 lg:grid-cols-4 gap-8 container my-12">
 
         <div class="col-span-1">
             <div class="card">
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-span-2">
+        <div class="col-span-1 lg:col-span-2">
             <x-card title="Offres d'emploi" class="min-h-screen">
                 <p>Display job offers here !</p>
             </x-card>
