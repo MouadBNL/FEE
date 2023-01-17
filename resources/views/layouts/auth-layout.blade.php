@@ -78,7 +78,7 @@
                         @csrf
                         @method('delete')
                         <x-button>
-                            Se déconnecter
+                            Déconnecter
                         </x-button>
                     </form>
 
@@ -91,7 +91,7 @@
                         </div>
                         <div>
                             <div class="hidden" id="mobile-menu-content">
-                                <ul class="absolute top-20 right-2 grid grid-cols-1 gap-4 bg-white p-4 shadow-md rounded-lg border-gray-100 border">
+                                <ul class="absolute z-[999] top-20 right-2 grid grid-cols-1 gap-4 bg-white p-4 shadow-md rounded-lg border-gray-100 border">
                                     <li><a class="block px-8 py-2 rounded hover:bg-primary hover:text-white" href="{{ route('dashboard') }}">Dashboard</a></li>
                                     <li><a class="block px-8 py-2 rounded hover:bg-primary hover:text-white" href="{{ route('myprofile') }}">Mon Profil</a></li>
                                     <li><a class="block px-8 py-2 rounded hover:bg-primary hover:text-white" href="{{ route('list-companies') }}">Entreprise</a></li>
