@@ -111,9 +111,9 @@ class ProfileController extends Controller
         $data = request()->validate([
             'summary' => 'present|string'
         ]);
-        Log::info("Non purified: \n" . $data['summary']);
+        // Log::info("Non purified: \n" . $data['summary']);
         $data['summary'] = Purifier::clean($data['summary']);
-        Log::info("Purified: \n" . $data['summary']);
+        // Log::info("Purified: \n" . $data['summary']);
 
         User::where('id', auth()->user()->id)->firstOrFail()->studentProfile()->update([
             'summary' => $data['summary']
@@ -186,8 +186,8 @@ class ProfileController extends Controller
         $data = request()->validate([
             'projects' => 'array|present',
             'projects.*.title' => 'string|required',
-            'projects.*.link' => 'string',
-            'projects.*.git' => 'string',
+            'projects.*.link' => 'string|nullable',
+            'projects.*.git' => 'string|nullable',
             'projects.*.description' => 'string',
             'projects.*.skills' => 'array',
             'projects.*.skills.*' => 'string|required',
