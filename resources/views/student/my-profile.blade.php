@@ -132,7 +132,7 @@
         </div>
         <div class="lg:col-span-2">
             <x-card title="Sommaire" class="mb-8 relative" id="summary">
-                <p class="text-gr-600 whitespace-pre-wrap">{{ $user->profile->summary ?? 'Pas de sommaire spécifié' }}</p>
+                <div class="text-gr-800 whitespace-pre-wrap enable-list">{!! $user->profile->summary ?? 'Pas de sommaire spécifié' !!}</div>
 
                 @if($edit)
                 <div class="absolute top-4 right-4">

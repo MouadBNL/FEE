@@ -7,6 +7,7 @@ use App\Models\CompanyProfile;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Mews\Purifier\Facades\Purifier;
 
 class ProfileController extends Controller
 {
@@ -66,6 +67,9 @@ class ProfileController extends Controller
         $data = request()->validate([
             'description' => 'string|nullable'
         ]);
+
+
+        $data['description'] = Purifier::clean($data['description']);
 
         User::company()->where('id', auth()->user()->id)->firstOrFail()->companyProfile()->update([
             'description' => $data['description']
