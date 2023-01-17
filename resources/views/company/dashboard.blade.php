@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="pt-14 pb-8 px-8 border-b border-gr-100">
                     <div class="relative overflow-hidden mx-auto h-32 w-32 rounded-full bg-gr-100 border border-primary aspect-square mb-8">
-                        <img class="absolute inset-0 object-cover" src="{{ $user->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" />
+                        <img class="absolute inset-0 object-cover h-32 w-32" src="{{ $user->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" />
                     </div>
     
                     <h3 class="h3 text-center">{{ auth()->user()->name }}</h3>

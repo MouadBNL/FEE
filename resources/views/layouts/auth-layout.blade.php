@@ -69,7 +69,9 @@
                             </svg>
                         </div>
                     </a>
-                    <img src="{{ auth()->user()->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" class="block h-11 aspect-square rounded-full bg-gr-100 border border-primary object-cover" />
+                    <a href="{{ route('myprofile') }}">
+                        <img src="{{ auth()->user()->picture ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }}" class="block h-11 aspect-square rounded-full bg-gr-100 border border-primary object-cover" />
+                    </a>
 
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
