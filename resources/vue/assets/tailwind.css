@@ -46,6 +46,13 @@ html{
 	@apply block px-2 py-2 transition rounded bg-transparent text-gray-900 hover:bg-primary hover:text-white;
 }
 
+.enable-list ol {
+	@apply list-decimal ml-4;
+}
+.enable-list ul {
+	@apply list-disc ml-4;
+}
+
 #grad-anim {
 	--gradient-color-1: #005f60;
 	--gradient-color-2: #316d57;

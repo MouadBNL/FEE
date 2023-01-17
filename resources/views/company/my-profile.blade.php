@@ -130,7 +130,7 @@
         <div class="col-span-1 lg:col-span-3">
             <x-card title="Description" class="relative">
                 @if($user->profile->description)
-                <div class="whitespace-pre-line text-gr-600"> {{ $user->profile->description }}</div>
+                <div class="whitespace-pre-line text-gr-600 enable-list"> {!! $user->profile->description !!}</div>
                 @else
                 <span class="text-gr-600">Pas de description spécifiées</span>
                 @endif

@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Mews\Purifier\Facades\Purifier;
 
 class ProfileController extends Controller
 {
@@ -109,6 +111,9 @@ class ProfileController extends Controller
         $data = request()->validate([
             'summary' => 'present|string'
         ]);
+        Log::info("Non purified: \n" . $data['summary']);
+        $data['summary'] = Purifier::clean($data['summary']);
+        Log::info("Purified: \n" . $data['summary']);
 
         User::where('id', auth()->user()->id)->firstOrFail()->studentProfile()->update([
             'summary' => $data['summary']
