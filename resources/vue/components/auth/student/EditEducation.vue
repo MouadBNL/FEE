@@ -12,14 +12,15 @@
                     <n-input type="text" v-model:value="education[index].school" placeholder="École" />
                 </n-form-item>
     
+                <small class="block text-red-500">Format YYYY-MM-DD</small>
                 <div class="grid grid-cols-2 gap-4">
     
                     <n-form-item label="Debut">
-                        <n-input type="text" v-model:value="education[index].start" placeholder="date de debut" />
+                        <n-input type="text" v-model:value="education[index].start" placeholder="YYYY-MM-DD" />
                     </n-form-item>
     
                     <n-form-item label="Fin">
-                        <n-input type="text" v-model:value="education[index].end" placeholder="Date de fin" />
+                        <n-input type="text" v-model:value="education[index].end" placeholder="YYYY-MM-DD" />
                     </n-form-item>
                 </div>
     
@@ -39,11 +40,12 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NCard, NDynamicInput, NFormItem, NInput } from 'naive-ui'
+import { NButton, NCard, NDynamicInput, NFormItem, NInput, useMessage } from 'naive-ui'
 import { ref, onMounted } from 'vue'
 import axios from '../../../services/axios';
 
 
+const message = useMessage()
 const education = ref([])
 const loading = ref(false)
 
@@ -56,6 +58,7 @@ const submit = async () => {
         window.location.reload()
     } catch (e) {
         loading.value = false
+        message.error("Une erreur s'est produite avec votre demande, veuillez vérifier vos entrées et leurs formats")
     }
 }
 

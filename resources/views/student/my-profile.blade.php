@@ -20,7 +20,7 @@
 
                         <h3 class="h3 text-center">{{ $user->name }}</h3>
                         <h4 class="h4 text-center relative">
-                            {{ $user->profile->field ?? 'undefined' }}
+                            {{ $user->profile->field ?? 'non défini' }}
                             @if($edit)
                         <div class="absolute top-0 -right-4">
                             <edit-button>
@@ -53,8 +53,8 @@
 
                     <div class="py-8 px-8 border-b border-gr-100 relative">
                         <h3 class="h3 mb-4">Contact</h3>
-                        <p class="text-gray-600 mb-2"><span class="text-gray-800 font-medium">Email: </span>{{ $user->profile->contact_email ?? ' non défini' }}</p>
-                        <p class="text-gray-600"><span class="text-gray-800 font-medium">Tel: </span>{{ $user->profile->contact_phone ?? ' non défini' }}</p>
+                        <p class="text-gray-600 mb-2"><span class="text-gray-800 font-medium">Email: </span>{{ $user->profile->contact_email ?? 'non défini' }}</p>
+                        <p class="text-gray-600"><span class="text-gray-800 font-medium">Tel: </span>{{ $user->profile->contact_phone ?? 'non défini' }}</p>
                         @if($edit)
                         <div class="absolute top-4 right-4">
                             <edit-button>

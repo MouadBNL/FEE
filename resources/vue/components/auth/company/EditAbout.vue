@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NInput, NCard, NDynamicTags, NFormItem } from 'naive-ui'
+import { NButton, NInput, NCard, NDynamicTags, NFormItem, useMessage } from 'naive-ui'
 import { ref, reactive, onMounted } from 'vue'
 import axios from '../../../services/axios';
 
@@ -57,6 +57,7 @@ const aboutInfo = ref({
     address: '',
     specialties: []
 })
+const message = useMessage()
 
 const submit = async (e) => {
     e.preventDefault()
@@ -66,6 +67,7 @@ const submit = async (e) => {
         window.location.reload()
     } catch (e) {
         loading.value = false
+        message.error("Une erreur s'est produite avec votre demande, veuillez vérifier vos entrées et leurs formats")
     }
 }
 

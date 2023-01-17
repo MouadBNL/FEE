@@ -84,7 +84,9 @@
 
         <main class="text-base" id="app">
             <n-config-provider :theme-overrides="{ 'common': { 'primaryColor': '#17888AFF', 'primaryColorHover': '#1F9EA0FF', 'primaryColorPressed': '#0E6365FF', 'primaryColorSuppl': '#17888AFF' } }">
-                {{ $slot ?? '' }}
+                <n-message-provider>
+                    {{ $slot ?? '' }}
+                </n-message-provider>
             </n-config-provider>
         </main>
 

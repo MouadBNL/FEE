@@ -16,12 +16,12 @@
         <!-- Banner -->
         <div v-if="authInfo.type == 'company'">
             <h3 class="font-bold text-gr-800 mb-2 mt-4">Image de bannière</h3>
-            <n-upload ref="banner" action="/api/company/profile/banner" :custom-request="editCompanyBanner" :multiple="false"
-                :show-file-list="false" accept=".jpeg,.png,.jpg">
+            <n-upload ref="banner" action="/api/company/profile/banner" :custom-request="editCompanyBanner"
+                :multiple="false" :show-file-list="false" accept=".jpeg,.png,.jpg">
                 <n-button :loading="bannerIsLoading">Sélectionnez une image de bannière</n-button>
             </n-upload>
         </div>
-        
+
 
         <hr class="my-8">
         <h3 class="font-bold text-gr-800 mb-4">Informations d'authentification</h3>
@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NUpload, NForm, NFormItem, NInput, NCard } from 'naive-ui'
+import { NButton, NUpload, NForm, NFormItem, NInput, NCard, useMessage } from 'naive-ui'
 import type { UploadFileInfo } from 'naive-ui'
 import { ref, reactive, onMounted } from 'vue'
 import axios from '../../services/axios';
@@ -72,6 +72,7 @@ const loading = ref(false)
 const formRef = ref()
 const formauthinfo = ref()
 const formpassword = ref()
+const message = useMessage()
 
 /**
  * Edit profile picture
@@ -90,8 +91,8 @@ const editProfilePicture = async ({ file }) => {
         })
         window.location.reload()
     } catch (err) {
+        message.error("Une erreur s'est produite avec votre demande, veuillez vérifier vos entrées et leurs formats")
         pictureIsLoading.value = false
-
     }
 }
 
@@ -109,7 +110,7 @@ const editCompanyBanner = async ({ file }) => {
         window.location.reload()
     } catch (err) {
         bannerIsLoading.value = false
-
+        message.error("Une erreur s'est produite avec votre demande, veuillez vérifier vos entrées et leurs formats")
     }
 }
 
@@ -127,10 +128,17 @@ const authInfoRules = {
         required: true,
         trigger: ['input', 'blur'],
         validator(rule: any, value: string) {
+            if (value.length < 8) {
+                return new Error("le nom doit être d'au moins 8 caractères")
+            }
             if (value.length > 32) {
                 return new Error("le nom ne peut pas dépasser 32 caractères")
-            } else if (value.length <= 0) {
+            }
+            if (value.length <= 0) {
                 return new Error("Le nom est requis")
+            }
+            if (!(/^[a-zA-Z0-9_-\s]{3,16}$/.exec(value))) {
+                return new Error("le nom ne doit contenir que des caractères alphanumériques, espace et _")
             }
             return true;
         }
@@ -160,6 +168,7 @@ const editAuthInfo = async (e) => {
         window.location.reload()
     } catch (error) {
         editAuthIsLoading.value = false
+        message.error("Une erreur s'est produite avec votre demande, veuillez vérifier vos entrées et leurs formats")
     }
 }
 
@@ -171,7 +180,29 @@ const passwords = reactive({
     password: "nice_try",
     password_confirmation: "nice_try"
 })
-const passwordRules = {}
+const passwordRules = {
+    password: {
+        required: true,
+        trigger: ['input', 'blur'],
+        validator(rule: any, value: string) {
+            if (value.length < 8) {
+                return new Error("Mot de passe doit être d'au moins 8 caractères")
+            }
+        }
+    },
+    password_confirmation: {
+        required: true,
+        trigger: ['input', 'blur'],
+        validator(rule: any, value: string) {
+            if (value.length < 8) {
+                return new Error("Mot de passe doit être d'au moins 8 caractères")
+            }
+            if (value != passwords.password) {
+                return new Error("la confirmation du mot de passe doit être la même")
+            }
+        }
+    }
+}
 
 const editPassword = async (e) => {
     e.preventDefault()
@@ -184,6 +215,7 @@ const editPassword = async (e) => {
         window.location.reload()
     } catch (error) {
         editPasswordIsLoading.value = false
+        message.error("Une erreur s'est produite avec votre demande, veuillez vérifier vos entrées et leurs formats")
     }
 }
 

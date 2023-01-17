@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NCard, NDynamicInput } from 'naive-ui'
+import { NButton, NCard, NDynamicInput, useMessage } from 'naive-ui'
 import { ref, onMounted } from 'vue'
 import axios from '../../../services/axios';
 
@@ -35,6 +35,8 @@ const submit = async () => {
         window.location.reload()
     } catch (e) {
         loading.value = false
+        const message = useMessage()
+        message.error("Une erreur s'est produite avec votre demande, veuillez vérifier vos entrées et leurs formats")
     }
 }
 
@@ -43,7 +45,8 @@ onMounted(async () => {
         const req = await axios.get('api/student/profile/languages')
         languages.value = req.data
     } catch (err) {
-        alert(err)
+        const message = useMessage()
+        message.error("Une erreur s'est produite avec votre demande, veuillez vérifier vos entrées et leurs formats")
     }
 })
 </script>

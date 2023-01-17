@@ -130,8 +130,8 @@ class ProfileController extends Controller
             'experiences' => 'array|present',
             'experiences.*.title' => 'string|required',
             'experiences.*.company' => 'string|required',
-            'experiences.*.start' => 'string|required',
-            'experiences.*.end' => 'string|required',
+            'experiences.*.start' => 'string|required|date_format:Y-m-d',
+            'experiences.*.end' => 'string|required|date_format:Y-m-d',
             'experiences.*.description' => 'string|required',
         ]);
 
@@ -156,8 +156,8 @@ class ProfileController extends Controller
             'education' => 'array|present',
             'education.*.title' => 'string|required',
             'education.*.school' => 'string|required',
-            'education.*.start' => 'string|required',
-            'education.*.end' => 'string|required',
+            'education.*.start' => 'string|required|date_format:Y-m-d',
+            'education.*.end' => 'string|required|date_format:Y-m-d',
             'education.*.description' => 'string|required',
         ]);
 
@@ -209,7 +209,7 @@ class ProfileController extends Controller
             'certifications' => 'array|present',
             'certifications.*.title' => 'string|required',
             'certifications.*.school' => 'string|required',
-            'certifications.*.reception' => 'string|required',
+            'certifications.*.reception' => 'string|required|date_format:Y-m-d',
         ]);
 
         $user = User::where('id', auth()->user()->id)->with(['studentProfile', 'studentProfile.certifications'])->firstOrFail();

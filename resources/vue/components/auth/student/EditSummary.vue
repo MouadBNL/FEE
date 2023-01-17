@@ -16,11 +16,11 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NInput, NCard } from 'naive-ui'
+import { NButton, NInput, NCard, useMessage } from 'naive-ui'
 import { ref, onMounted } from 'vue'
 import axios from '../../../services/axios';
 
-
+const message = useMessage()
 const summary = ref("")
 const loading = ref(false)
 
@@ -33,6 +33,7 @@ const submit = async () => {
         window.location.reload()
     } catch (e) {
         loading.value = false
+        message.error("Une erreur s'est produite avec votre demande, veuillez vérifier vos entrées et leurs formats")
     }
 }
 
@@ -41,7 +42,7 @@ onMounted(async () => {
         const req = await axios.get('api/student/profile/summary')
         summary.value = req.data
     } catch (err) {
-        alert(err)
+        message.error("Une erreur s'est produite avec votre demande.")
     }
 })
 </script>

@@ -14,11 +14,12 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NUpload, NForm, NFormItem, NInput, NCard } from 'naive-ui'
+import { NButton, NUpload, NForm, NFormItem, NInput, NCard, useMessage } from 'naive-ui'
 import type { UploadFileInfo } from 'naive-ui'
 import { ref, reactive, onMounted } from 'vue'
 import axios from '../../../services/axios';
 
+const message = useMessage()
 const cv = ref()
 const cvIsLoading = ref(false)
 const cvDeleting = ref(false)
@@ -35,6 +36,8 @@ const editProfileCV = async ({ file }) => {
         window.location.reload()
     } catch (err) {
         cvIsLoading.value = false
+        
+        message.error("Une erreur s'est produite avec votre demande, veuillez vérifier vos entrées et leurs formats")
 
     }
 }
@@ -46,6 +49,7 @@ const deleteStudentCV = async () => {
         window.location.reload()
     } catch (err) {
         cvDeleting.value = false
+        message.error("Une erreur s'est produite avec votre demande, veuillez vérifier vos entrées et leurs formats")
 
     }
 }

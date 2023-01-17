@@ -16,13 +16,14 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NInput, NCard } from 'naive-ui'
+import { NButton, NInput, NCard, useMessage } from 'naive-ui'
 import { ref, onMounted } from 'vue'
 import axios from '../../../services/axios';
 
 
 const description = ref("")
 const loading = ref(false)
+const message = useMessage()
 
 const submit = async () => {
     try {
@@ -33,6 +34,7 @@ const submit = async () => {
         window.location.reload()
     } catch (e) {
         loading.value = false
+        message.error("Une erreur s'est produite avec votre demande, veuillez vérifier vos entrées et leurs formats")
     }
 }
 

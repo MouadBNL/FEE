@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NUpload, NForm, NFormItem, NSelect, NCard } from 'naive-ui'
+import { NButton, NUpload, NForm, NFormItem, NSelect, NCard, useMessage } from 'naive-ui'
 import type { UploadFileInfo } from 'naive-ui'
 import { ref, reactive, onMounted,computed } from 'vue'
 import axios from '../../../services/axios';
@@ -55,6 +55,8 @@ const selected = reactive({
     year: ""
 })
 
+const message = useMessage()
+
 const types = computed(() => {
     return fields.map((el) => {
         return {
@@ -82,6 +84,7 @@ const editField = async () => {
         window.location.reload()
     } catch (err) {
         loading.value = false
+        message.error("Une erreur s'est produite avec votre demande, veuillez vérifier vos entrées et leurs formats")
 
     }
 }

@@ -1,5 +1,5 @@
 import { createApp } from "vue/dist/vue.esm-bundler"
-import { NConfigProvider } from "naive-ui"
+import { NConfigProvider, NMessageProvider } from "naive-ui"
 
 const app = createApp({})
 
@@ -50,5 +50,6 @@ app.component('edit-company-about', EditCompanyAbout)
 app.component('edit-company-description', EditCompanyDescription)
 
 app.component('n-config-provider', NConfigProvider)
+app.component('n-message-provider', NMessageProvider)
 
 app.mount('#app')
